@@ -8,6 +8,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/users',function(req,res){
   res.send('hai users');
-})
+});
 
 module.exports = router;
