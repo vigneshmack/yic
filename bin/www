@@ -9,7 +9,7 @@ var debug = require('debug')('yic:server');
 var http = require('http').Server(app);
 var io=require('socket.io')(http);
 
-require('../routes/socket.js')(io);
+require('../routes/socket')(io);
 
 
 /**
