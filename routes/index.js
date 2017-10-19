@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var io=require('../bin/www');
+
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,15 +14,15 @@ router.get('/users',function(req,res){
   res.send('hai users');
 });
 
-router.post('/user_invite',function(req,res){
+router.get('/user_invite',function(req,res){
 
-  if(req.body.email && req.body.role)   //need to check the persons role
+  if(req.params.email!=="" && req.params.role!=="")   //need to check the persons role
   {
 res.send("okk");
   }
   else
   {
-    res.send('please mention email and role');
+    res.send(req.query.email);
   }
 
 })
