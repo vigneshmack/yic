@@ -1,96 +1,676 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>YIC</title>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <!-- VENDOR CSS -->
-  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-  <link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <!-- MAIN CSS -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <!-- GOOGLE FONTS -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-  <!-- ICONS -->
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
-  <!-- Javascript -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-  <script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-  <script src="assets/vendor/chartist/js/chartist.min.js"></script>
-  <script src="assets/scripts/klorofil-common.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>YIC</title>
+  <!--STYLES-->
+  <link rel="stylesheet" href="/assets/css/animate.min.css">
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/font-awesome.css">
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/importer.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!--STYLES END-->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<!-- WRAPPER -->
-<div id="wrapper">
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="brand">
-      <a href="">Young Innovators Club</a>
+
+
+<!-- Section Intro Slider
+================================================== -->
+<div id="carousel-example-generic" class="carousel intro slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+
+  <div class="carousel-inner" role="listbox">
+    <!-- First slide -->
+    <div class="item active" style="background-image:url(https://s3-eu-west-1.amazonaws.com/layanademo/s1-min.jpg)">
+      <div class="carousel-caption">
+        <h2 data-animation="animated bounceInDown">
+          WE ARE CREATIVE </h2>
+        <h1 data-animation="animated bounceInUp">
+        </h1>
+        <a href="#" class="btn btn-ghost btn-lg" data-animation="animated fadeInLeft">Start Tour</a><a href="#" class="btn btn-primary btn-lg" data-animation="animated fadeInRight">Learn More</a>
+      </div>
     </div>
-    <div class="container-fluid">
-      <div class="navbar-btn">
-        <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-cross"></i></button>
+    <!-- /.item -->
+    <!-- Second slide -->
+    <div class="item" style="background-image:url(https://s3-eu-west-1.amazonaws.com/layanademo/s2-min.jpg)">
+      <div class="carousel-caption">
+        <h2 data-animation="animated zoomInLeft">
+          WE ARE INNOVATIVE </h2>
+        <h1 data-animation="animated zoomInRight">
+          Bootstrap Theme </h1>
+        <a href="#" class="btn btn-ghost btn-lg" data-animation="animated bounceIn">Start Tour</a><a href="#" class="btn btn-primary btn-lg" data-animation="animated bounceIn">Learn More</a>
+      </div>
+    </div>
+    <!-- /.item -->
+    <!-- Third slide -->
+    <div class="item" style="background-image:url(https://s3-eu-west-1.amazonaws.com/layanademo/s3-min.jpg)">
+      <div class="carousel-caption">
+        <h2 data-animation="animated bounceInLeft">
+          Layana by WowThemesNet</h2>
+        <h1 data-animation="animated bounceInRight">
+          Happy Coding</h1>
+        <a href="#" class="btn btn-ghost btn-lg" data-animation="animated zoomInRight">Learn More</a><a href="#" class="btn btn-primary btn-lg" data-animation="animated zoomInRight" data-toggle="modal" data-target="#myModal">Login</a>
+      </div>
+    </div>
+    <!-- /.item -->
+  </div>
+  <!-- /.carousel-inner -->
+  <!-- Controls (currently displayed none from style.css)-->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- /.carousel -->
+<div id="page-top">
+  <nav id="#mainNav" class="navbar navbar-default" data-spy="affix" data-offset-top="600">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top"><img src="/assets/images/logo-yic.png" style="max-width:50px" alt="YIC"></a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="page-scroll" href="#carousel-example-generic">Home</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#about">About</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#services">Services</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#portfolio">Work</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#pricing">Pricing</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">Contact</a>
+          </li>
+          <a id="loginid" class="page-scroll btn btn-info" type="button" style="margin-top:4px" href="login">Login</a>
+        </ul>
+      </div>
+    </div>
+
+
+  </nav>
+</div>
+<!-- Section About
+================================================== -->
+<section id="about">
+  <div class="container wow zoomIn">
+    <!--<div class="row">
+      <div class="col-md-12">
+        <h3 class="section-title">Our Motto</h3>
+        <div class="section-title-divider"></div>
+        <p class="section-description" tyle="text-align:justify"> Incubate young talent to help productize their ideas and facilitate their career development.</p>
+      </div>
+    </div>-->
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">Our Motto</h2>
+        <h3 class="section-subheading text-muted">Incubate young talent to help productize their ideas and facilitate their career development.</h3>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+<!-- Section after about
+================================================== -->
+<section class="no-padding">
+  <div class="equal-heights w-middle">
+    <div class="col-md-4 bg-primary">
+      <div class="box">
+        <div class="service-icon"><i class="fa fa-handshake-o"></i></div>
+        <h2>Collaborate</h2>
+        <!--<div class="row">
+          <div class="col-md-4 service-item">
+            <div class="service-icon"><i class="fa fa-handshake-o"></i></div>
+            <h4 class="service-title"><a href="">Collaborate</a></h4>
+            <p class="service-description" style="text-align:justify">JCI India Engineering organizes tech events to recognize bright young students, and provides them the opportunity to collaborate with domain experts to develop their innovative ideas using the YIC platform.</p>
+          </div>-->
+        <p>
+          JCI India Engineering organizes tech events to recognize bright young students, and provides them the opportunity to collaborate with domain experts to develop their innovative ideas using the YIC platform.
+        </p>
+
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box">
+        <div class="service-icon"><i class="fa fa-microchip"></i></div><h2>Innovate</h2>
+        <!--<div class="row">
+          <div class="col-md-4 service-item">
+            <div class="service-icon"><i class="fa fa-handshake-o"></i></div>
+            <h4 class="service-title"><a href="">Collaborate</a></h4>
+            <p class="service-description" style="text-align:justify">JCI India Engineering organizes tech events to recognize bright young students, and provides them the opportunity to collaborate with domain experts to develop their innovative ideas using the YIC platform.</p>
+          </div>-->
+        <p>
+          The innovation soul, spirit and drive at JCI India Engineering facilitates YIC to empower domain experts and YIC members to create innovative solutions to real world problems.
+        </p>
       </div>
 
-      <div id="navbar-menu">
-        <ul class="nav navbar-nav navbar-right">
-          <form class="navbar-form navbar-left">
-            <div class="input-group">
-              <input type="text" value="" class="form-control" placeholder="Search">
-              <span class="input-group-btn"><button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button></span>
-            </div>
-          </form>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-              <i class="lnr lnr-alarm"></i>
-              <span class="badge bg-danger">5</span>
-            </a>
-            <ul class="dropdown-menu notifications">
-              <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
-              <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
-              <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
-              <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
-              <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
-              <li><a href="#" class="more">See all notifications</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-              <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-              <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-              <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
-            </ul>
-          </li>
-        </ul>
+    </div>
+    <div class="col-md-4 bg-dark">
+      <div class="box">
+        <div class="service-icon"><i class="fa fa-bullseye"></i></div>
+
+        <h2>Create</h2>
+        <p>
+          Innovative solutions collaboratively created by YIC members are fine-tuned by JCI India Engineering domain leaders to add business value and make the solutions more marketable.
+        </p>
       </div>
     </div>
-  </nav>
-  <!-- END NAVBAR -->
-  <!-- LEFT SIDEBAR -->
-  <div id="sidebar-nav" class="sidebar">
-    <div class="sidebar-scroll">
-      <nav>
-        <ul class="nav">
-          <li><a href="" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-          <li><a href="" class=""><i class="lnr lnr-code"></i> <span>Projects</span></a></li>
-          <li><a href="" class=""><i class="lnr lnr-calendar-full"></i> <span>Events</span></a></li>
-          <li><a href="" class=""><i class="lnr lnr-graduation-hat"></i> <span>Collages</span></a></li>
-          <li><a href="" class=""><i class="lnr lnr-user"></i> <span>Users</span></a></li>
-          <li><a href="" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-        </ul>
-      </nav>
+  </div>
+  <!-- <div class="equal-heights w-middle">
+     <div class="col-md-4 bg-gray">
+       <div class="box">
+         <h2>Give <b>Cheerfully</b></h2>
+         <p>
+           When we give cheerfully and accept gratefully, everyone is blessed. A bone to the dog is not charity. Charity is the bone shared with the dog, when you are just as hungry as the dog.
+         </p>
+       </div>
+     </div>
+     <div class="col-md-4 bg-darkgray">
+       <div class="box">
+         <div class="service-icon"><i class="fa fa-bullseye"></i></div>
+         <h2>Create</h2>
+         <p>
+           Innovative solutions collaboratively created by YIC members are fine-tuned by JCI India Engineering domain leaders to add business value and make the solutions more marketable.  </p>
+       </div>
+     </div>
+     <div class="col-md-4 bg-gray">
+       <div class="box">
+         <h2>Enjoy <b>Life</b></h2>
+         <p>
+           The simplest acts of kindness are by far more powerful then a thousand heads bowing in prayer. Let us not forget that the real solution lies in a world in which charity will be unnecessary.
+         </p>
+       </div>
+     </div>
+   </div>-->
+</section>
+<div class="clearfix">
+</div>
+
+<!-- Section Timeline
+================================================== -->
+<section id="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading">YIC Journey</h2>
+        <h3 class="section-subheading text-muted">The Journey of a thousand miles begins with one step.</h3>
+      </div>
+    </div>
+  </div></br>
+  <div class="row">
+
+    <div class="col-lg-12">
+      <ul class="timeline">
+        <li>
+          <div class="timeline-image container-fluid">
+            <h4 style="font-family:Jokerman;"  class="text-center">
+              <div class="date-icon fa fa-user"></div> </h4>
+          </div>
+
+          <div class="timeline-panel">
+
+            <div class="timeline-heading">
+              <h4>2015-2016</h4>
+              <h4 class="subheading">Our Beginning</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted text-justify">Under the Academic Interface Program, JCI was a sponsor of a hackathon named 'Make-A-Thon16' which took place at Vellore Institue of Technology, Vellore Campus.That was the very first step and the beginning of Young Innovators Club.</p>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <h4 style="font-family:Jokerman" class="text-center">
+
+              <div class="date-icon fa fa-user"></div>
+
+            </h4>
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4></h4>
+              <h4 class="subheading">A Club is Born</h4>
+            </div>
+
+            <div class="timeline-body">
+              <p class="text-muted text-justify">The winners of the 'Make-A-Thon16' were provided with an offer of internship at JCI where they showcased their project ideas at Technovate16.They were also provided with the membership of the Young Innovators Club.This was how the Club was born.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-image">
+            <h4 style="font-family:Jokerman" class="text-center">
+
+
+              <div class="date-icon fa fa-user"></div>  </h4>
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+
+              <h4 class="subheading">First YIC Presetation</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted text-justify">We Sponsored JCI Makeathon for the first time in March 2017 in March 2017 We visited VIT University, Vellore for JCI Makeathon in April 2017. Winners of JCI Makeathon were invited as an interns at JCI in May 2017. They will be presenting ideas at BT&S Tech Challenge India 2017 on 13th June 2017.</p>
+            </div>
+          </div>
+
+      </ul>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+</section>
+
+<!-- Section Portfolio
+================================================== -->
+<!--1-->
+<!-- work section -->
+<div id="works1" class="section">
+  <div class="container">
+    <h1 class="text-center title" id="portfolio">Colleges Partners</h1>
+    <div class="separator"></div>
+    <p class="lead text-center">College<br>Partner</p>
+    <br>
+    <div class="row object-non-visible" data-animation-effect="fadeIn">
+      <div class="col-md-12">
+
+        <!-- portfolio items start -->
+        <div class="isotope-container row grid-space-20">
+          <div class="col-sm-6 col-md-3 isotope-item web-design">
+            <div class="image-box">
+              <div class="overlay-container">
+                <img src="img/demo/testimonial1.jpg" alt="">
+                <a class="overlay" data-toggle="modal" data-target="#project1-1">
+                  <i class="fa fa-search-plus"></i>
+                  <span>Web Design</span>
+                </a>
+              </div>
+              <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project1-1">Project Title</a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="project1-1" tabindex="-1" role="dialog" aria-labelledby="project-1-label" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="project-1-label">Project Title</h4>
+                  </div>
+                  <div class="modal-body">
+                    <h3>Project Description</h3>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
+                        <p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
+                      </div>
+                      <div class="col-md-6">
+                        <img src="img/demo/testimonial1.jpg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal end -->
+          </div>
+
+        </div>
+
+      </div>
+      <!-- portfolio items end -->
+
     </div>
   </div>
 </div>
-  <!-- END LEFT SIDEBAR -->
+</div>
+<!-- section end -->
+
+<!-- Section Team
+================================================== -->
+<section class="no-padding">
+  <div class="col-md-4 bg-primary no-padding teambox">
+    <div class="team-thumb overlay-image view-overlay">
+      <img src="https://s3-eu-west-1.amazonaws.com/layanademo/guess-attic-837156_640.jpg" alt="" class="img-responsive">
+      <div class="mask team_quote">
+        <div class="port-zoom-link">
+          <p>
+            Its is great to work in such company, some other projects will be started in the same format!
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2>BEVERLY GARCIA</h2>
+    <p>
+      VOLUNTEER WORK
+    </p>
+    <div class="team-social">
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-google-plus"></i></a>
+      <a href="#"><i class="fa fa-skype"></i></a>
+    </div>
+  </div>
+  <div class="col-md-4 bg-dark no-padding teambox">
+    <div class="team-thumb overlay-image view-overlay">
+      <img src="https://s3-eu-west-1.amazonaws.com/layanademo/beauty-355157_640.jpg" alt="" class="img-responsive">
+      <div class="mask team_quote">
+        <div class="port-zoom-link">
+          <p>
+            Its is great to work in such company, some other projects will be started in the same format!
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2>MARY LACOSTE</h2>
+    <p>
+      LAYANA FOUNDER
+    </p>
+    <div class="team-social">
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-google-plus"></i></a>
+      <a href="#"><i class="fa fa-skype"></i></a>
+    </div>
+  </div>
+  <div class="col-md-4 bg-primary no-padding teambox">
+    <div class="team-thumb overlay-image view-overlay">
+      <img src="https://s3-eu-west-1.amazonaws.com/layanademo/woman-983967_640.jpg" alt="" class="img-responsive">
+      <div class="mask team_quote">
+        <div class="port-zoom-link">
+          <p>
+            Its is great to work in such company, some other projects will be started in the same format!
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2>CAROL STEPHENS</h2>
+    <p>
+      PUBLIC RELATIONS
+    </p>
+    <div class="team-social">
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-google-plus"></i></a>
+      <a href="#"><i class="fa fa-skype"></i></a>
+    </div>
+  </div>
+</section>
+<div class="clearfix">
+</div>
+
+<!-- Section Testimonials
+================================================== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">YIC Events</h2>
+          <h3 class="section-subheading text-muted">The Journey of a thousand miles begins with one step.</h3>
+        </div>
+      </div>
+      <div class="col-lg-offset-10"><button type="button" class="btn btn-info">Next</button></div>
+      <div class="col-md-12" data-wow-delay="0.2s">
+        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+          <!-- Bottom Carousel Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="img/demo/testimonial1.jpg" alt="">
+            </li>
+            <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/11/2015/11/23042525/1-150x150.png" alt="">
+            </li>
+          </ol>
+          <!-- Carousel Slides / Quotes -->
+          <div class="carousel-inner text-center">
+            <!-- Quote 1 -->
+            <div class="item active">
+              <blockquote>
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore!
+                    </p>
+                    <small>William W. Purkey</small>
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+            <!-- Quote 2 -->
+            <div class="item">
+              <blockquote>
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+                    </p>
+                    <small>Johnny Doe</small>
+                  </div>
+                </div>
+              </blockquote>
+            </div>
+            <!-- End Quote 2 -->
+          </div>
+          <!-- Carousel Buttons Next/Prev -->
+          <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+          <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Section after pricing
+================================================== -->
+<section>
+  <div class="equal-heights w-middle">
+    <div class="col-md-4 bg-primary">
+      <div class="box">
+        <h2>Final <b>Action</b></h2>
+        <p>
+          Praesent vestibulum aenean nonummy hendrerit mauris. Cum sociis natoque penatibus.
+        </p>
+        <a href="#" class="btn btn-round btn-white btn-xl">Action Button</a>
+      </div>
+    </div>
+    <div class="col-md-4" style="height: 337px;">
+      <img src="https://s3-eu-west-1.amazonaws.com/layanademo/cat.jpg" alt="">
+    </div>
+    <div class="col-md-4 bg-dark">
+      <div class="box">
+        <h2><b>Convinced</b> Yet</h2>
+        <p>
+          The simplest acts of kindness are by far more powerful then a thousand heads bowing in prayer. Let us not forget that the real solution lies in a world in which charity will be unnecessary.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="clearfix">
+</div>
+
+<!-- Section Contact
+================================================== -->
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <h2 class="section-heading">CONTACT <b>US</b></h2>
+        <hr class="primary">
+        <p>
+          Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!
+        </p>
+        <div class="regularform">
+          <div class="done">
+            <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              Your message has been sent. Thank you!
+            </div>
+          </div>
+          <form method="post" action="contact.php" id="contactform" class="text-left">
+            <input name="name" type="text" class="col-md-6 norightborder" placeholder="Your Name *">
+            <input name="email" type="email" class="col-md-6" placeholder="E-mail address *">
+            <textarea name="comment" class="col-md-12" placeholder="Message *"></textarea>
+            <input type="submit" id="submit" class="contact submit btn btn-primary btn-xl" value="Send message">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Footer
+================================================== -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 text-center">
+        <!--<h1 class="bottombrand wow flipInX"-->
+        <div class="container">
+          <div class="row wow fadeInLeft">
+            <div class="col-md-4">
+              <div class="funfacts text-center">
+                <div class="icon">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </div>
+                <h4>Facebook</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="funfacts text-center">
+                <div class="icon">
+                  <a href="#"><img src="images/logo-yic.png" style="max-width:50px;" alt="YIC" /></a>
+                </div>
+                <h4>YIC</h4>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="funfacts text-center">
+                <div class="icon">
+                  <a href="#"><i class="fa fa-google"></i></a>
+                </div>
+                <h4>Google</h4>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--login modal-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(document).on("scroll", onScroll);
+        //smoothscroll
+        $('li a[href^="#"]').on('click', function (e) {
+            e.preventDefault();
+            $(document).off("scroll");
+
+            $('li a').each(function () {
+                $(this).removeClass('active');
+            })
+            $(this).addClass('active');
+
+            var target = this.hash,
+                menu = target;
+            $target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top + 2
+            }, 500, 'swing', function () {
+                window.location.hash = target;
+                $(document).on("scroll", onScroll);
+            });
+        })
+    });
+
+    function onScroll(event)
+    {
+        var scrollPos = $(document).scrollTop();
+        $('#bs-example-navbar-collapse-1 a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                //  $('#nav-menu-container ul li a').removeClass("active");
+                $('#bs-example-navbar-collapse-1 ul li').removeClass("active");
+                currLink.addClass("active");
+            }
+            else {
+                currLink.removeClass("active");
+                $('#bs-example-navbar-collapse-1 ul li').removeClass("menu-active");
+            }
+        });
+    }
+</script>
+<!-- SCRIPTS-->
+<script src="/assets/scripts/jquery.js"></script>
+<script src="/assets/scripts/bootstrap.min.js"></script>
+<script src="/assets/scripts/parallax.js"></script>
+<script src="/assets/scripts/contact.js"></script>
+<script src="/assets/scripts/countto.js"></script>
+<script src="/assets/scripts/jquery.easing.min.js"></script>
+<script src="/assets/scripts/wow.min.js"></script>
+<script src="/assets/scripts/common.js"></script>
+<!--SCRIPITS END-->
 </body>
 </html>
+
