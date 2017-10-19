@@ -10,4 +10,18 @@ router.get('/users',function(req,res){
   res.send('hai users');
 });
 
+router.post('/user_invite',function(req,res){
+
+  if(req.body.email && req.body.role)   //need to check the persons role
+  {
+res.send("okk");
+  }
+  else
+  {
+    res.send('please mention email and role');
+  }
+
+})
+
+
 module.exports = router;
