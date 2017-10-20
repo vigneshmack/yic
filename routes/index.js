@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/users',function(req,res){
-  res.send('hai users');
+  res.render('users',{title:'Express'});
 });
 
 
@@ -31,7 +31,7 @@ res.send("okk");
     res.send(req.query.email);
   }
 
-})
+});
 
 
 
