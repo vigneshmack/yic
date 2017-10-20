@@ -206,6 +206,7 @@
                 e.preventDefault();
                 var email=$('#email').val();
                 var role=$('#role').val();
+                alert(email);
                 if(!email.length>0)
                 {
                     $('#snackbar').text("Enter email address");
@@ -228,16 +229,16 @@
                     myFunction();
                     $.ajax({
                         url: '/user_invite',
-                        type: "get",
+                        type: "POST",
                         data: {
                             email: email,
                             role: role
                         },
                         success: function(response) {
-                            alert(response);
+                            $('#myModal').modal('hide');
                         },
                         error: function(xhr, status, error) {
-                            alert(xhr.responseText);
+
                         }
                     });
                 }
