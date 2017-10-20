@@ -18,7 +18,7 @@ router.get('/projects', function(req, res, next) {
     res.render('projects', { title: 'Express' });
 });
 
-router.get('/events.ejs', function(req, res, next) {
+router.get('/events', function(req, res, next) {
     res.render('events', { title: 'Express' });
 });
 
