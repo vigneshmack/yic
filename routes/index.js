@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var io=require('../bin/www');
 
+var _db=require('./mongo');
+
 
 
 
@@ -14,11 +16,15 @@ router.get('/users',function(req,res){
   res.send('hai users');
 });
 
+
+
 router.get('/user_invite',function(req,res){
 
   if(req.params.email!=="" && req.params.role!=="")   //need to check the persons role
   {
+
 res.send("okk");
+
   }
   else
   {
@@ -26,6 +32,7 @@ res.send("okk");
   }
 
 })
+
 
 
 module.exports = router;
