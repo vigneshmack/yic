@@ -301,7 +301,7 @@
           if (!o.alwaysVisible) { bar.hide(); }
         }
 
-        // attach scroll events
+        // attach scroll events.ejs
         attachWheel();
 
         function _onWheel(e)
