@@ -1039,7 +1039,7 @@ var Chartist = {
    * @memberof Chartist.Core
    * @param {Object} options Options set by user
    * @param {Array} responsiveOptions Optional functions to add responsive behavior to chart
-   * @param {Object} eventEmitter The event emitter that will be used to emit the options changed events
+   * @param {Object} eventEmitter The event emitter that will be used to emit the options changed events.ejs
    * @return {Object} The consolidated options object from the defaults, base and matching responsive options
    */
   Chartist.optionsProvider = function (options, responsiveOptions, eventEmitter) {
@@ -1603,7 +1603,7 @@ var Chartist = {
 
 }(window, document, Chartist));
 ;/**
- * A very basic event module that helps to generate and catch events.
+ * A very basic event module that helps to generate and catch events.ejs.
  *
  * @module Chartist.Event
  */
@@ -1868,7 +1868,7 @@ var Chartist = {
    * Use this function to register event handlers. The handler callbacks are synchronous and will run in the main thread rather than the event loop.
    *
    * @memberof Chartist.Base
-   * @param {String} event Name of the event. Check the examples for supported events.
+   * @param {String} event Name of the event. Check the examples for supported events.ejs.
    * @param {Function} handler The handler function that will be called when an event with the given name was emitted. This function will receive a data argument which contains event data. See the example for more details.
    */
   function on(event, handler) {
