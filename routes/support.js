@@ -12,8 +12,8 @@ module.exports={
             host: 'smtp.gmail.com',
             port: 465,
             auth: {
-                user: 'sampleprogrammers@gmail.com',
-                pass: 'sampleprogrammers1.1.'
+                user: 'yic.jci3.1@gmail.com',
+                pass: 'alwaysforward1.'
             }
         }));
         var link="http://yic3.herokuapp.com/";
@@ -53,6 +53,8 @@ module.exports={
             console.log('Message %s sent: %s', info.messageId, info.response);
             console.log("Mail sent successfully");
         });
+
+
 
     }
 
