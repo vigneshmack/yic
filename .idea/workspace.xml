@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+
     <list default="true" id="8995769f-c77e-4395-8ab1-07d14fde41b3" name="Default" comment="User Invitation UI and Validation and routing">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -16,8 +17,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+
       <file leaf-file-name="users.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/users.ejs">
           <provider selected="true" editor-type-id="text-editor">
@@ -150,6 +153,7 @@
           </provider>
         </entry>
       </file>
+
       <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/home.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -163,6 +167,7 @@
       <file leaf-file-name="mongo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/mongo.js">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="0">
               <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
               <folding />
@@ -181,6 +186,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+
       <find>margin-top</find>
       <find>brand</find>
       <find>panel-f</find>
@@ -192,6 +198,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/../YIC UI/index.html" />
         <option value="$PROJECT_DIR$/views/projects.ejs" />
@@ -218,7 +225,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1370" />
@@ -240,6 +247,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -325,7 +333,50 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/inno2.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/11229982_975830669124810_3496682208534986814_o.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/BITS_Pilani-Logo.svg.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/Bits_Pilani_Campus.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/DyPiet.jpeg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT Kharagpur.JPG</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT kharagpur (2).jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT kharagpur (3).jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT_Building.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT_Kharagpur_Logo.svg.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT_Roorkee.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IMG_20160429_184542.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMK exterior.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMK3.JPG</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMKImage.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMK_Engineering_College.gif</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/VIT.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/Vellore_Institute_of_Technology_seal.svg.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bitp.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bits.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bits5.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bits6.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bits7.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy2.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy3.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy5.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy6.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy7.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy8.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dypatil.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/kgp4.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/kgp5.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/kgp6.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/park1 (1).jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/rmk2.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/rmk4.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/rmk5.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/roorkee2.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/roorkee3.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/roorkee4.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/s4.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/events/_RPR1785.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/events/abt.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/events/event44.jpg</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -427,9 +478,69 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.bin\www">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.bin\www" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -464,75 +575,7 @@
       <option name="project" value="LOCAL" />
       <updated>1508251518468</updated>
     </task>
-    <task id="LOCAL-00003" summary="added required files and routing">
-      <created>1508400055379</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1508400055379</updated>
-    </task>
-    <task id="LOCAL-00004" summary="User Invitation UI and Validation and routing">
-      <created>1508483980428</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1508483980428</updated>
-    </task>
-    <task id="LOCAL-00005" summary="User Invitation mail sending">
-      <created>1508504469776</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1508504469776</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Adding Signup page">
-      <created>1508579413938</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1508579413938</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59704000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24776785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5104167" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.48809522" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.48958334" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-    </layout>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Adding Dashboard external files" />
-    <MESSAGE value="Deleted extra files in views" />
-    <MESSAGE value="added required files and routing" />
-    <MESSAGE value="User Invitation UI and Validation and routing" />
-    <MESSAGE value="User Invitation mail sending" />
-    <MESSAGE value="Adding Signup page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Signup page" />
+
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -693,6 +736,14 @@
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#5;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#22452#22458#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -866,13 +917,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/error.ejs">
+    <entry file="file://$PROJECT_DIR$/../YIC UI/index.html" />
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/public/stylesheets/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -921,9 +974,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/routes/events.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -998,10 +1053,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="153" column="24" lean-forward="false" selection-start-line="153" selection-start-column="19" selection-end-line="153" selection-end-column="24" />
-          <folding />
+         <folding />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$USER_HOME$/Downloads/AdminLTE-master/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -1031,6 +1087,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/routes/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1041,6 +1098,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="153">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
@@ -1053,12 +1111,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/smtp-connection/lib/smtp-connection.js">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="127">
           <caret line="1230" column="29" lean-forward="false" selection-start-line="1230" selection-start-column="29" selection-end-line="1230" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/views/dashboard.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
