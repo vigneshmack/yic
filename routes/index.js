@@ -13,13 +13,13 @@ var _db=require('./mongo');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/login', function(req, res, next) {
-    res.render('home', { title: 'Express' });
-});
 router.get('/users',function(req,res){
   res.render('users',{title:'Express'});
 });
 
+router.get('/signup',function(req,res) {
+    res.render('signup', {title: 'Express'});
+});
 
 
 router.post('/user_invite',function(req,res){
