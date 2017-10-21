@@ -28,7 +28,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            var id = GetParameterValues('email');
+            var id = GetParameterValues('id');
             function GetParameterValues(param) {
                 var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
                 for (var i = 0; i < url.length; i++) {
@@ -38,14 +38,98 @@
                     }
                 }
             }
+            $('#signup_submit').on('click',function (e) {
+                e.preventDefault();
+                var password=$('#password').val();
+                var password1=$('#password1').val();
+                if(password.length<1)
+                {
+                    $('#snackbar').text("Enter password");
+                    myFunction();
+                }
+                else if(password1.length<1)
+                {
+                    $('#snackbar').text("Retype password");
+                    myFunction();
+                }
+                else if(password1!==password)
+                {
+                    $('#snackbar').text("Password mismatched");
+                    myFunction();
+                }
+                else
+                {
+                    $.ajax({
+                        url: '/signup_user',
+                        type: "POST",
+                        data: {
+                            id: id,
+                            password: password
+                        },
+                        success: function(response) {
+
+                        },
+                        error: function(xhr, status, error) {
+                        }
+                    });
+                }
+            })
         });
+        function myFunction() {
+            var x = document.getElementById("snackbar")
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
     </script>
+    <style>
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
 </head>
 <body style="background-color: whitesmoke">
 <div class="container col-sm-offset-4" style="margin-top: 12%">
     <div class="row">
         <div class="col-md-5" style="background-color: #2c3a4c;-webkit-box-shadow: 0 0 10px #414141;box-shadow: 0 0 10px #414141;">
-            <div class="row text-center" style="color:whitesmoke;padding: 3%;font-family: 'Yu Gothic UI Light'">
+            <div class="row text-center" style="color:whitesmoke;padding: 3%;font-family: 'Yu Gothic UI Light',serif">
                 Young Innovators Club
             </div>
             <hr style="background-color: whitesmoke"/>
@@ -53,7 +137,7 @@
                 <div class="col-md-10">
                     <div class="input-group col-sm-offset-3">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="text" class="form-control is-valid" name="password" placeholder="Password">
+                        <input id="password" type="password" class="form-control is-valid" name="password" placeholder="Password">
                     </div>
                 </div>
             </div>
@@ -61,7 +145,7 @@
                 <div class="col-md-10" style="margin-top: 6%">
                     <div class="input-group col-sm-offset-3">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password1" type="text" class="form-control is-valid" name="password1" placeholder="Retype Password">
+                        <input id="password1" type="password" class="form-control is-valid" name="password1" placeholder="Retype Password">
                     </div>
                 </div>
             </div>
@@ -69,12 +153,13 @@
             <div class="row" style="margin-bottom: 5%">
                 <div class="col-md-12">
                     <div class="col-sm-offset-5">
-                        <a href="" style="text-decoration: none;background-color: whitesmoke;color: #222222" class="btn">Submit</a>
+                        <a id="signup_submit" style="text-decoration: none;background-color: whitesmoke;color: #222222" class="btn">Submit</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="snackbar">Some text some message..</div>
 </div>
 </body>
 </html>
