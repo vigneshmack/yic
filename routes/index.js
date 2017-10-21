@@ -158,7 +158,7 @@ router.post('/user_invite',function(req,res){
 
 router.get('/signup_autho',function(req,res){
 
-    if(req.query.id===undefined) {
+    if(req.query.id!==undefined) {
         var h = _db.collection("email");
          var cursor=h.find({_id: req.query.email,id:req.query.id});
           cursor.count(function(err,c){
