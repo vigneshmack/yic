@@ -132,7 +132,9 @@ router.post('/user_invite',function(req,res){
                var data={
                      _id:req.body.email,
                      id:gid,
-                     role:req.body.role
+                   name:req.body.name,
+                     role:req.body.role,
+                   up:"n"
                  };
                  var h=_db.collection('email');
                  h.insertOne(data,function(err){
@@ -182,7 +184,7 @@ router.get('/signup_autho',function(req,res){
                           role=x.role;
                       });
 
-                      res.redirect("/signup?email="+req.query.email+"&role="+role);
+                      res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
                   }
                   else
                       res.send("Invalid credential access :(");
@@ -199,7 +201,7 @@ router.get("/signup",function(req,res) {
     if(ses.user_valid==="y")
     {
 
-res.render("signup",{id:"17yic0001",email:req.query.email,role:req.query.role})
+res.render("signup");
     }
     else
     {
@@ -213,11 +215,23 @@ router.post('/signup_user',function(req,res){
     var ses=req.session;
     if(ses.user_valid==="y")
     {
+
+
+        var h=_db.collection("email");
+
+        h.find({id:req.query.id}).forEach(function(x){
+         email=x.email;
+         name=x.name;
+         role=x.role;
+        })
+
+
+
         var data={
-            _id:req.body.yicid,
-            email:req.body.email,
-            name:req.body.name,
-            role:req.body.role,
+
+            email:email,
+            name:name,
+            role:role,
             password:req.body.password
         }
 
@@ -231,6 +245,12 @@ router.post('/signup_user',function(req,res){
 
 
 })
+
+router.get('/sam',function(req,res){
+
+
+})
+
 
 
 
