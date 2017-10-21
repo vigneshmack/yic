@@ -95,11 +95,11 @@ function send_invite(email,url)                                     //sending em
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'YIC' });
 });
 
 router.get('/users',function(req,res){
-  res.render('users',{title:'Express'});
+  res.render('users',{title:'YIC'});
 });
 
 router.get('/signup',function(req,res) {
@@ -194,15 +194,40 @@ router.get('/signup_autho',function(req,res){
 
 router.get("/signup",function(req,res) {
     var ses=req.session;
+
+
     if(ses.user_valid==="y")
     {
 
-res.send("welcome bro");
+res.render("signup",{id:"17yic0001",email:req.query.email,role:req.query.role})
     }
     else
     {
         res.send("Invalid signup");
     }
+
+
+})
+
+router.post('/signup_user',function(req,res){
+    var ses=req.session;
+    if(ses.user_valid==="y")
+    {
+        var data={
+            _id:req.body.yicid,
+            email:req.body.email,
+            name:req.body.name,
+            role:req.body.role,
+            password:req.body.password
+        }
+
+        var h=_db.collection("users");
+
+        h.insertOne(data);
+
+    res.render("index",{title:"YIC"});
+    }
+
 
 
 })
