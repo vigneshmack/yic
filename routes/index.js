@@ -174,18 +174,32 @@ router.get('/signup_autho',function(req,res){
               {
                   if(c==1)
                   {
-                      var ses=req.session;
-                      ses.user_valid="y";
-
-                      console.log("user visited "+req.query.email);
                       var h=_db.collection("email");
-                      var role="";
-                      h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
-                          role=x.role;
-                      });
+                      h.find({_id:req.query.email}).forEach(function(x){
+                          if(x.up==="n")
+                          {
 
-                      res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
-                  }
+
+                              var ses=req.session;
+                              ses.user_valid="y";
+
+                              console.log("user visited "+req.query.email);
+                              var h=_db.collection("email");
+                              var role="";
+                              h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
+                                  role=x.role;
+                              });
+
+                              res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
+
+
+                          }
+                      else
+                          {
+                              res.send("Invalid credential access :(");
+                          }
+                      })
+                                        }
                   else
                       res.send("Invalid credential access :(");
               }
@@ -235,9 +249,12 @@ router.post('/signup_user',function(req,res){
             password:req.body.password
         }
 
-        var h=_db.collection("users");
+         h=_db.collection("users");
 
         h.insertOne(data);
+
+        h=_db.collection('email');
+     h.updateOne({_id:email},{$set:{up:"y"}});
 
     res.render("index",{title:"YIC"});
     }
