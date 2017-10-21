@@ -48,7 +48,7 @@ function send_invite(email,url)                                     //sending em
             pass: 'alwaysforward1.'
         }
     }));
-    var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&"+"id="+url;
+    var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&id="+url;
     transporter.sendMail({
         from: "sampleprogrammers@gmail.com",
         subject:"Invitation for YIC" ,
@@ -132,7 +132,9 @@ router.post('/user_invite',function(req,res){
                var data={
                      _id:req.body.email,
                      id:gid,
-                     role:req.body.role
+                   name:req.body.name,
+                     role:req.body.role,
+                   up:"n"
                  };
                  var h=_db.collection('email');
                  h.insertOne(data,function(err){
@@ -172,18 +174,32 @@ router.get('/signup_autho',function(req,res){
               {
                   if(c==1)
                   {
-                      var ses=req.session;
-                      ses.user_valid="y";
-
-                      console.log("user visited "+req.query.email);
                       var h=_db.collection("email");
-                      var role="";
-                      h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
-                          role=x.role;
-                      });
+                      h.find({_id:req.query.email}).forEach(function(x){
+                          if(x.up==="n")
+                          {
 
-                      res.redirect("/signup?email="+req.query.email+"&role="+role);
-                  }
+
+                              var ses=req.session;
+                              ses.user_valid="y";
+
+                              console.log("user visited "+req.query.email);
+                              var h=_db.collection("email");
+                              var role="";
+                              h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
+                                  role=x.role;
+                              });
+
+                              res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
+
+
+                          }
+                      else
+                          {
+                              res.send("Invalid credential access :(");
+                          }
+                      })
+                                        }
                   else
                       res.send("Invalid credential access :(");
               }
@@ -199,7 +215,7 @@ router.get("/signup",function(req,res) {
     if(ses.user_valid==="y")
     {
 
-res.render("signup",{id:"17yic0001",email:req.query.email,role:req.query.role})
+res.render("signup");
     }
     else
     {
@@ -213,17 +229,32 @@ router.post('/signup_user',function(req,res){
     var ses=req.session;
     if(ses.user_valid==="y")
     {
+
+
+        var h=_db.collection("email");
+
+        h.find({id:req.query.id}).forEach(function(x){
+         email=x.email;
+         name=x.name;
+         role=x.role;
+        })
+
+
+
         var data={
-            _id:req.body.yicid,
-            email:req.body.email,
-            name:req.body.name,
-            role:req.body.role,
+
+            email:email,
+            name:name,
+            role:role,
             password:req.body.password
         }
 
-        var h=_db.collection("users");
+         h=_db.collection("users");
 
         h.insertOne(data);
+
+        h=_db.collection('email');
+     h.updateOne({_id:email},{$set:{up:"y"}});
 
     res.render("index",{title:"YIC"});
     }
@@ -231,6 +262,12 @@ router.post('/signup_user',function(req,res){
 
 
 })
+
+router.get('/sam',function(req,res){
+
+
+})
+
 
 
 
