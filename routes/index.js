@@ -13,7 +13,9 @@ var _db=require('./mongo');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+router.get('/login', function(req, res, next) {
+    res.render('home', { title: 'Express' });
+});
 router.get('/users',function(req,res){
   res.render('users',{title:'Express'});
 });
