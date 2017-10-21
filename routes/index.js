@@ -48,7 +48,7 @@ function send_invite(email,url)                                     //sending em
             pass: 'alwaysforward1.'
         }
     }));
-    var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&"+"id="+url;
+    var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&id="+url;
     transporter.sendMail({
         from: "sampleprogrammers@gmail.com",
         subject:"Invitation for YIC" ,
