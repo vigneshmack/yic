@@ -190,7 +190,7 @@ router.get('/signup_autho',function(req,res){
 
 });
 
-router.post("/signup",function(req,res) {
+router.get("/signup",function(req,res) {
     var ses=req.session;
     if(ses.user_valid==="y")
     {
