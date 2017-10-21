@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8995769f-c77e-4395-8ab1-07d14fde41b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="282">
-              <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+              <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -72,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="225" column="34" lean-forward="false" selection-start-line="225" selection-start-column="34" selection-end-line="225" selection-end-column="34" />
+              <caret line="227" column="34" lean-forward="false" selection-start-line="227" selection-start-column="34" selection-end-line="227" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -229,8 +228,15 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/jsLibraryMappings.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/yic.iml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/node_modules/express/package.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/css/bootstrap.min.css</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/css/style.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/routes/index.js</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/views/index.ejs</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/users.ejs</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -238,9 +244,26 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/inno2.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/Subrata.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/Subrata_new.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/Swapnil Dhume.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/ashok.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/hariharasudhan.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/nilankur.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/sauvik.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/mentors/vivek.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/signup.ejs</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/css/bootstrap.css</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/11229982_975830669124810_3496682208534986814_o.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/BITS_Pilani-Logo.svg.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/Bits_Pilani_Campus.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/DyPiet.jpeg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT Kharagpur.JPG</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/IIT kharagpur (2).jpg</PATH>
@@ -253,7 +276,6 @@
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMK3.JPG</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMKImage.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/RMK_Engineering_College.gif</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/VIT.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/Vellore_Institute_of_Technology_seal.svg.png</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bitp.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/bits.jpg</PATH>
@@ -268,7 +290,6 @@
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy7.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dy8.png</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/dypatil.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/kgp4.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/kgp5.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/kgp6.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/park1 (1).jpg</PATH>
@@ -279,16 +300,7 @@
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/roorkee3.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/roorkee4.jpg</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/clgimgs/s4.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/events/_RPR1785.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/events/abt.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/events/event44.jpg</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/public/assets/images/demo/testimonial1.jpg</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -462,7 +474,7 @@
       <workItem from="1508241192843" duration="2438000" />
       <workItem from="1508250385107" duration="2113000" />
       <workItem from="1508286501874" duration="94000" />
-      <workItem from="1508486208448" duration="21100000" />
+      <workItem from="1508486208448" duration="21192000" />
     </task>
     <task id="LOCAL-00001" summary="Adding Dashboard external files">
       <created>1508250665164</created>
@@ -576,21 +588,27 @@
       <option name="project" value="LOCAL" />
       <updated>1508575801167</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="signup_user updated">
+      <created>1508581588356</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1508581588356</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26730000" />
+    <option name="totallyTimeSpent" value="26822000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1614114" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.496997" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38372093" sideWeight="0.5204856" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.487988" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.487988" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31260228" sideWeight="0.47951442" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.490991" order="7" side_tool="false" content_ui="tabs" x="0" y="23" width="1354" height="705" />
@@ -663,7 +681,8 @@
     <MESSAGE value="modules export for email invite" />
     <MESSAGE value="reverted some changes" />
     <MESSAGE value="signup_autho updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="signup_autho updated" />
+    <MESSAGE value="signup_user updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="signup_user updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -898,7 +917,7 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -922,7 +941,7 @@
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="225" column="34" lean-forward="false" selection-start-line="225" selection-start-column="34" selection-end-line="225" selection-end-column="34" />
+          <caret line="227" column="34" lean-forward="false" selection-start-line="227" selection-start-column="34" selection-end-line="227" selection-end-column="34" />
           <folding />
         </state>
       </provider>
