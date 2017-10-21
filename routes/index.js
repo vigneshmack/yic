@@ -7,6 +7,7 @@ var io=require('../bin/www');
 var id=require('idgen');
 
 
+
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
@@ -47,7 +48,7 @@ function send_invite(email,url)                                     //sending em
             pass: 'alwaysforward1.'
         }
     }));
-    var link="http://yic3.herokuapp.com/signup_autho?id="+url;
+    var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&"+"id="+url;
     transporter.sendMail({
         from: "sampleprogrammers@gmail.com",
         subject:"Invitation for YIC" ,
@@ -159,7 +160,7 @@ router.get('/signup_autho',function(req,res){
 
     if(req.query.id===undefined) {
         var h = _db.collection("email");
-         var cursor=h.find({_id: req.query.id,email:req.query.email});
+         var cursor=h.find({_id: req.query.email,id:req.query.id});
           cursor.count(function(err,c){
               if(err)
               {
@@ -169,8 +170,17 @@ router.get('/signup_autho',function(req,res){
               {
                   if(c==1)
                   {
+                      var ses=req.session;
+                      ses.user_valid="y";
+
                       console.log("user visited "+req.query.email);
-                      res.redirect("/signup?email="+req.query.email+"&id="+req.query.id);
+                      var h=_db.collection("email");
+                      var role="";
+                      h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
+                          role=x.role;
+                      });
+
+                      res.redirect("/signup?email="+req.query.email+"&role="+role);
                   }
                   else
                       res.send("Invalid credential access :(");
@@ -180,6 +190,20 @@ router.get('/signup_autho',function(req,res){
 
 });
 
+router.post("/signup",function(req,res) {
+    var ses=req.session;
+    if(ses.user_valid==="y")
+    {
+
+
+    }
+    else
+    {
+        res.send("Invalid signup");
+    }
+
+
+})
 
 
 
