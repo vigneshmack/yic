@@ -98,11 +98,13 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'YIC' });
 });
 
-
 router.get('/users',function(req,res){
   res.render('users',{title:'YIC'});
 });
 
+router.get('/signup',function(req,res) {
+    res.render('signup', {title: 'Express'});
+});
 
 
 router.post('/user_invite',function(req,res){

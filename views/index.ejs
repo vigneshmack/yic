@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <link rel="stylesheet" href="/assets/css/animate.min.css">
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/font-awesome.css">
@@ -17,12 +18,56 @@
   <link rel="stylesheet" href="/assets/css/importer.less">
   <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+    <!--toast css-->
+    <style>
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #32d2df;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 30px;
+            font-size: 17px;
+        }
 
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {top: 0; opacity: 0;}
+            to {top: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {top: 30px; opacity: 1;}
+            to {top: 0; opacity: 0;}
+        }
+    </style>
     <!--STYLES END-->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+
 </head>
 
 <body>
@@ -37,7 +82,7 @@
                  </h2>
             <h1 data-animation="animated bounceInUp">
                 We Love to Create </h1>
-            <a href="#" class="btn btn-ghost btn-lg" data-animation="animated fadeInLeft">Learn More</a><a href="#" class="btn btn-primary btn-lg" data-animation="animated fadeInRight">Login</a>
+            <a href="#" class="btn btn-ghost btn-lg page-scroll" data-animation="animated fadeInLeft">Learn More</a><a href="#" class="btn btn-primary btn-lg" data-animation="animated fadeInRight" data-toggle="modal" data-target="#loginid">Login</a>
         </div>
     </div>
 </div>
@@ -66,7 +111,7 @@
             <a class="page-scroll" href="#Colleges">Colleges</a>
           </li>
             <li>
-                <a class="page-scroll" href="#Collab">Collaborates</a>
+                <a class="page-scroll" href="#team">Collaborates</a>
             </li>
 
             <li>
@@ -90,14 +135,12 @@
         <h3 class="section-subheading text-muted">Incubate young talent to help productize their ideas and facilitate their career development.</h3>
       </div>
     </div>
-
-  </div>
   </div>
 </section>
 <!-- Section after about
 ================================================== -->
 <section class="no-padding">
-  <div class="equal-heights w-middle">
+  <div class="equal-heights">
     <div class="col-md-4 bg-primary">
       <div class="box">
         <div class="service-icon"><i class="fa fa-handshake-o"></i></div>
@@ -129,9 +172,6 @@
     </div>
   </div>
   </section>
-<div class="clearfix">
-</div>
-
 <!-- Section Timeline
 ================================================== -->
 <section id="yicjourney">
@@ -150,7 +190,7 @@
         <li>
           <div class="timeline-image container-fluid">
             <h4 style="font-family:Jokerman;"  class="text-center">
-              <div class="date-icon fa fa-user"></div> </h4>
+              <div class="date-icon fa fa-user"></div></h4>
           </div>
 
           <div class="timeline-panel">
@@ -208,6 +248,7 @@
 </section>
 
 </section>
+<!---timeline-->
 
 <!-- Section Portfolio
 ================================================== -->
@@ -292,13 +333,111 @@
 </section>
 <!-- section end -->
 <!--Collab-->
+<!--==========================
+  Team Section
+============================-->
+<section id="team">
+    <div class="container wow zoomIn">
 
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title text-center">Our Amazing Mentors</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container wow zoomIn">
+                    <div class="member">
+                        <div class="pic"><img class="img-circle" src="assets/images/mentors/Subrata.jpg" style="width:256px;height:256px" alt=""></div>
+                        <h4>Subrata Bhattacharyya</h4>
+                        <span>Chief Patron</span>
+                        <div class="social">
+                            <a href=""><i class="fa fa-twitter"></i></a>
+                            <a href=""><i class="fa fa-facebook"></i></a>
+                            <a href=""><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="member">
+                    <div style="padding:15px"><img class="img-circle" src="assets/images/mentors/ashok.jpg" style="width:200px;height:200px" alt=""></div>
+                    <h4>Ashok Sridharan</h4>
+                    <span>President</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/Ashok.sridharan.s"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/ashok-sridharan-3502a226/"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="member">
+                    <div style="padding:15px"><img class="img-circle" src="assets/Images/mentors/hariharasudhan.jpg" style="width:200px;height:200px" alt=""></div>
+                    <h4>Hariharasudhan Venugopal</h4>
+                    <span>Technical Panel Head</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/Hariharasudhanv77"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/vivek-shivakant-tripathi-a3799673/"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="member">
+                    <div style="padding:15px"><img class="img-circle" src="assets/images/mentors/nilankur.jpg" style="width:200px;height:200px" alt=""></div>
+                    <h4>Nilankur Majumdar</h4>
+                    <span>SR. General Manager</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/nilankur.mazumdar"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/vivek-shivakant-tripathi-a3799673/"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="member">
+                    <div style="padding:15px"><img class="img-circle" src="assets/images/mentors/vivek.jpg" style="width:180px;height:180px" alt=""></div>
+                    <h4>Vivek Tripathi</h4>
+                    <span>Joint Secretary</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/vivek-shivakant-tripathi-a3799673/"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="member">
+                    <div style="padding:15px"><img class="img-circle" src="assets/images/mentors/sauvik.jpg" style="width:180px;height:180px" alt=""></div>
+                    <h4>Sauvik Ghosh</h4>
+                    <span>AIP Co.ordinator</span>
+                    <div class="social">
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/vivek-shivakant-tripathi-a3799673/"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 <!-- Section Testimonials
 ================================================== -->
 <div id="events" style="background-color:orange;padding: 0px;margin: 0px;width: 100%;background-color: black">
-    <div class="" style="margin:0px;width:100%;">
-
+    <div class="carousel slide"  data-ride="carousel" style="margin:0px;width:100%;">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" style="padding: 0px;margin: 0px;">
                 <div class="item active">
@@ -324,8 +463,8 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-    </div>
 </div>
+
 
 
 
@@ -413,21 +552,56 @@
         </br>
           <div class="col-lg-offset-5">
             <p>
-            <button id="login_button" class="btn btn-primary">Sign in</button>
-          </p>
-            <a href="#">Forgot Password?</a>
+            <button id="login_button" class="btn btn-info">Sign in</button>
+          <p>
+            <a href="#">Forgot Password</a>
           </p>
         </div>
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-primary">Register</a>
+          <div class="text-center"><a href="#" data-toggle="modal" data-target="#guestid" data-dismiss="modal">Are you a Guest?</a></div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
+<!--Guest login-->
+<div class="modal fade" id="guestid" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h3 class="col-lg-offset-5">Guest Login</h3>
+                <form method="post" action='' name="login_form">
+                    <br>
+                    <div class="col-lg-offset-2">
+                        <div class="col-xs-10">
+                            <div class="input-group">
+                                <input id="email" type="text" class="form-control input-lg" name="email" placeholder="Email">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </br>
+                    </br>
+                    <div class="col-lg-offset-5">
+                            <button id="login_button" class="btn btn-info">Sign in</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center"><a href="#" data-toggle="modal" data-target="#loginid" data-dismiss="modal">Are you a User?</a></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!--toast-->
+<div id="snackbar">Enter Email and Password</div>
 
 <!-- SCRIPTS-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -441,9 +615,62 @@
 <script>
     $(document).ready(function () {
        $('#login_button').on('click',function (e) {
-           $.ajax('/login');
+           e.preventDefault();
+           var  user=$('#email').val();
+           var pass=$('#password').val();
+           if((!user.length>0) && (!(pass.length)>0)){
+               $('#snackbar').text("Enter the fields");
+               alert('Enter U and P');
+               myFunction();
+           }
+           else if(!user.length>0){
+               $('#snackbar').text("Enter username");
+               alert('Enter U');
+               myFunction();
+           }
+           else if(!pass.length>0)
+           {
+               $('#snackbar').text("Enter password");
+               alert('Enter PASSWORD');
+               myFunction();
+           }
+           else{
+               validatelogin(user,pass);
+           }
+
        })
+
     });
+    function validatelogin(user,pass) {
+        var emailReg = /^([\w-]\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        if (!emailReg.test(user)) {
+            $('#snackbar').text("Invalid email");
+            alert("error");
+            myFunction();
+        } else {
+            $('#snackbar').text("Sending Request");
+            myFunction();
+            $.ajax({
+                url: '/user_invite',
+                type: "POST",
+                data: {
+                    email: user,
+                    password: pass
+                },
+                success: function(response) {
+
+                },
+                error: function(xhr, status, error) {
+
+                }
+            });
+        }
+    }
+    function myFunction() {
+        var x = document.getElementById("snackbar")
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
 </script>
 <!--SCRIPITS END-->
 </body>
