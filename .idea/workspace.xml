@@ -474,7 +474,7 @@
       <workItem from="1508241192843" duration="2438000" />
       <workItem from="1508250385107" duration="2113000" />
       <workItem from="1508286501874" duration="94000" />
-      <workItem from="1508486208448" duration="21192000" />
+      <workItem from="1508486208448" duration="21199000" />
     </task>
     <task id="LOCAL-00001" summary="Adding Dashboard external files">
       <created>1508250665164</created>
@@ -595,11 +595,18 @@
       <option name="project" value="LOCAL" />
       <updated>1508581588356</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="signup_user updated">
+      <created>1508581662994</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1508581662994</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26822000" />
+    <option name="totallyTimeSpent" value="26829000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
