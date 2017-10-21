@@ -2,7 +2,11 @@ var  m=require('mongodb');
 
 var url="mongodb://yic:alwaysforward1.@ds040837.mlab.com:40837/yic"; //keep it safe
 
+module.exports=function()
+{
 var mc=m.MongoClient;
+
+
 var _db;
 
 
@@ -13,9 +17,11 @@ mc.connect(url,function(err,db){
     }
     else
     {
-        console.log("DB connected");
         _db=db;
-    }
-});
+        console.log("DB connected");
 
-module.exports=_db;
+    }
+}
+);
+return _db;
+};
