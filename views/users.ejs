@@ -144,7 +144,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-3">
-                                <p style="font-size: 1.5em">Users</p>
+                                 <p style="font-size: 1.5em">Users</p>
                             </div>
                             <div class="pull-right col-md-1">
                                 <button type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" style="color: #0c8ec3;font-size: 2.0em"></i></button>
@@ -194,7 +194,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="user_invite" class="btn btn-primary">Invite</button>
+                <button type="button" id="user_invite" class="btn btn-primary" data-dismiss="modal">Invite</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -206,7 +206,6 @@
                 e.preventDefault();
                 var email=$('#email').val();
                 var role=$('#role').val();
-                alert(email);
                 if(!email.length>0)
                 {
                     $('#snackbar').text("Enter email address");
@@ -220,7 +219,7 @@
 
 
             function validateEmail(email,role) {
-                var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                var emailReg = /^([\w-]\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
                 if (!emailReg.test(email)) {
                     $('#snackbar').text("Invalid email");
                     myFunction();
@@ -235,12 +234,12 @@
                             role: role
                         },
                         success: function(response) {
-                            $('#myModal').modal('hide');
                         },
                         error: function(xhr, status, error) {
 
                         }
                     });
+
                 }
             }
         });
