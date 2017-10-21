@@ -169,6 +169,14 @@
                         <div class="row" style="margin-top: 5%">
                             <div class="col-md-9">
                                 <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="name" type="text" class="form-control is-valid" name="name" placeholder="Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-md-9">
+                                <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
                                     <input id="email" type="text" class="form-control is-valid" name="email" placeholder="Email">
                                 </div>
@@ -194,7 +202,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="user_invite" class="btn btn-primary" data-dismiss="modal">Invite</button>
+                <button type="button" id="user_invite" class="btn btn-primary">Invite</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -204,22 +212,28 @@
         $(document).ready(function() {
             $('#user_invite').on('click',function (e) {
                 e.preventDefault();
+                var name=$('#name').val();
                 var email=$('#email').val();
                 var role=$('#role').val();
-                if(!email.length>0)
+                if(!name.length>0)
+                {
+                    $('#snackbar').text("Enter Name");
+                    myFunction();
+                }
+                else if(!email.length>0)
                 {
                     $('#snackbar').text("Enter email address");
                     myFunction();
                 }
                 else
                 {
-                    validateEmail(email,role);
+                    validateEmail(name,email,role);
                 }
             });
 
 
-            function validateEmail(email,role) {
-                var emailReg = /^([\w-]\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            function validateEmail(name,email,role) {
+                var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 if (!emailReg.test(email)) {
                     $('#snackbar').text("Invalid email");
                     myFunction();
@@ -230,13 +244,14 @@
                         url: '/user_invite',
                         type: "POST",
                         data: {
+                            name: name,
                             email: email,
                             role: role
                         },
                         success: function(response) {
+
                         },
                         error: function(xhr, status, error) {
-
                         }
                     });
 

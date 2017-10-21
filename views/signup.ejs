@@ -28,110 +28,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            /**
-             * @return {string}
-             */
-            function GetURLParameter(sParam)
-            {
-                var sPageURL = window.location.search.substring(1);
-                var sURLVariables = sPageURL.split('&');
-                for (var i = 0; i < sURLVariables.length; i++)
-                {
-                    var sParameterName = sURLVariables[i].split('=');
-                    if (sParameterName[0] == sParam)
-                    {
-                        return decodeURIComponent(sParameterName[1]);
+            var id = GetParameterValues('email');
+            function GetParameterValues(param) {
+                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < url.length; i++) {
+                    var urlparam = url[i].split('=');
+                    if (urlparam[0] == param) {
+                        return urlparam[1];
                     }
                 }
-            }​
-            var id=GetURLParameter('id');
-            var email=GetURLParameter('email');
-            var role=GetURLParameter('role');
-
-            alert(id+" "+email+" "+role);
+            }
         });
-
     </script>
 </head>
-<body  style="background-color: #07030c">
-<div id="wrapper">
-    <div>
-        <div class="col-md-7">
-
-        </div>
-        <div class="col-md-5">
-            <br>
-            <div class="panel panel-headline" style="background-color: #00b488;color: whitesmoke;margin-right: 8%" >
-                <div class="panel-heading">
-                    <h3 class="panel-title">Signup</h3>
+<body style="background-color: whitesmoke">
+<div class="container col-sm-offset-4" style="margin-top: 12%">
+    <div class="row">
+        <div class="col-md-5" style="background-color: #2c3a4c;-webkit-box-shadow: 0 0 10px #414141;box-shadow: 0 0 10px #414141;">
+            <div class="row text-center" style="color:whitesmoke;padding: 3%;font-family: 'Yu Gothic UI Light'">
+                Young Innovators Club
+            </div>
+            <hr style="background-color: whitesmoke"/>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="input-group col-sm-offset-3">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password" type="text" class="form-control is-valid" name="password" placeholder="Password">
+                    </div>
                 </div>
-
-                <div class="panel-body">
-                    <hr style="color: whitesmoke"/>
-                    <div class="row" style="margin-left: 0.3%;font-family: 'Yu Gothic UI Semibold',serif">
-                       <div class="col-md-10">Welcome vigneshbvpro@gmail.com</div>
+            </div>
+            <div class="row">
+                <div class="col-md-10" style="margin-top: 6%">
+                    <div class="input-group col-sm-offset-3">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="password1" type="text" class="form-control is-valid" name="password1" placeholder="Retype Password">
                     </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 10%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-inbox"></i></span>
-                                <input id="email" type="text" class="form-control is-valid" name="yicid" placeholder="YIC ID">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 3%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="name" type="text" class="form-control is-valid" name="name" placeholder="Name">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 3%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input id="envelope" type="text" class="form-control is-valid" name="envelope" placeholder="Envelope">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 3%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-tower"></i></span>
-                                <input id="role" type="text" class="form-control is-valid" name="role" placeholder="Role">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 3%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-education"></i></span>
-                                <input id="company" type="text" class="form-control is-valid" name="company" placeholder="University/Company">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 3%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password" type="text" class="form-control is-valid" name="password" placeholder="Password">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-sm-offset-1" style="margin-top: 3%">
-                        <div class="col-md-10">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="background-color: #2c3a4c;color: whitesmoke"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password1" type="text" class="form-control is-valid" name="password1" placeholder="Retype password">
-                            </div>
-                        </div>
-                    </div>
-                    <hr style="color: whitesmoke"/>
-                    <div class="row">
-                        <div class="col-md-3 pull-right">
-                            <a href="" class="btn" style="background-color: #2c3a4c;text-decoration: none;color: whitesmoke">Signup</a>
-                        </div>
+                </div>
+            </div>
+            <hr style="background-color: whitesmoke"/>
+            <div class="row" style="margin-bottom: 5%">
+                <div class="col-md-12">
+                    <div class="col-sm-offset-5">
+                        <a href="" style="text-decoration: none;background-color: whitesmoke;color: #222222" class="btn">Submit</a>
                     </div>
                 </div>
             </div>
