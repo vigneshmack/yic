@@ -98,10 +98,10 @@ function send_invite(email,url)                                     //sending em
 
 }
 
-function yic_id()
+var yic_id=function()
 {
     var collect= _db.collection("yic_details");
-    collect.find({"_id" :"yic101"}).forEach(function(x)
+    collect.find({_id:"yic101"}).forEach(function(x)
     {
         var count=x.yic_members;
     });
@@ -110,17 +110,21 @@ function yic_id()
     var digit=year.substring(2,4);
     var nodigits=count.toString().length();
     var userid="";
-    if(nodigits==1)
+    if(nodigits===1)
     {
          userid=digit+"YIC"+"000"+count++;
     }
-    else if(nodigits==2)
+    else if(nodigits===2)
     {
          userid=digit+"YIC"+"00"+count++;
     }
-    else
+    else if(nodigits===3)
     {
          userid=digit+"YIC"+"0"+count++;
+    }
+    else
+    {
+        userid=digit+"YIC"+count++;
     }
 
 return userid;
