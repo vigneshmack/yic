@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var session = require("express-session");
-router.use(session({secret: 'yicauthprivate',cookie:{maxAge:60*60*24*1000}}));
+router.use(session({
+    secret: 'yicauthprivate',
+    cookie:{maxAge:60*60*24*1000},
+    resave: false,
+    saveUninitialized: false
+}));
 var io=require('../bin/www');
 
 //var _db=require('./mongo');
