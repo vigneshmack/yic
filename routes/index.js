@@ -57,7 +57,7 @@ function send_invite(email,url)                                     //sending em
     }));
     var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&id="+url;
     transporter.sendMail({
-        from: "sampleprogrammers@gmail.com",
+        from: "yic.jci3.1@gmail.com",
         subject:"Invitation for YIC" ,
         to: email,
         html : "<!DOCTYPE HTML>\n" +
@@ -89,40 +89,56 @@ function send_invite(email,url)                                     //sending em
         if (error) {
             return console.log(error);
         }
-        console.log('Message %s sent: %s', info.messageId, info.response);
-        console.log("Mail sent successfully");
-    });
+        else {
+            console.log('Message %s sent: %s', info.messageId, info.response);
+            console.log("Mail sent successfully");
+
+        }
+        });
 
 
 
 
 }
 
-function impl()
+var yic_id=function()
 {
+
     var collect= _db.collection("yic_details");
-    collect.find({"_id" : ObjectId("59ec1fdcacdace4c6a469cbe")}).forEach(function(x)
+    collect.find({_id:"yic101"}).forEach(function(x)
     {
-        var count=x.yic_members;
+       var count=x.yic_members;
     });
     var date=new Date();
     var year=date.getFullYear().toString();
     var digit=year.substring(2,4);
     var nodigits=count.toString().length();
-    if(nodigits==1)
+    var userid=""
+    if(nodigits===1)
     {
-        var userid=digit+"YIC"+"000"+count++;
+         userid=digit+"YIC"+"000"+count++;
     }
-    else if(nodigits==2)
+    else if(nodigits===2)
     {
-        var userid=digit+"YIC"+"00"+count++;
+         userid=digit+"YIC"+"00"+count++;
+    }
+    else if(nodigits===3)
+    {
+         userid=digit+"YIC"+"0"+count++;
     }
     else
     {
-        var userid=digit+"YIC"+"0"+count++;
+        userid=digit+"YIC"+count++;
     }
 
-}
+//    count++;
+
+    //var h=_db.collection("yic_details");
+    //h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
+
+
+return userid;
+};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -143,7 +159,7 @@ router.post('/user_invite',function(req,res){
   //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
   //{
       var gid = id(15);
-
+var yicid=yic_id();
       var h=_db.collection('email');
 
       var cursor=h.find({_id:req.body.email});
@@ -165,7 +181,8 @@ router.post('/user_invite',function(req,res){
                      id:gid,
                    name:req.body.name,
                      role:req.body.role,
-                   up:"n"
+                   up:"n",
+                   yic_id:yicid
                  };
                  var h=_db.collection('email');
                  h.insertOne(data,function(err){
@@ -213,14 +230,14 @@ router.get('/signup_autho',function(req,res){
                               ses.user_valid="y";
 
                               console.log("user visited "+req.query.email);
-                              var h=_db.collection("email");
+                            /*  var h=_db.collection("email");
                               var role="";
                               h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
                                   role=x.role;
-                              });
+                              });*/
 
-                              res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
-
+                            //  res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
+                                res.render("signup",{id:req.query.id});
 
                           }
                       else
@@ -287,7 +304,8 @@ router.post('/signup_user',function(req,res){
 
     res.render("index",{title:"YIC"});
     }
-})
+});
+
 router.post('/login',function(req,res)
 {
     ses.alive=0;
@@ -297,7 +315,7 @@ router.post('/login',function(req,res)
     {
         if(ok)
         {
-            impl();
+
             ses.alive=1;
             res.render('dashboard');
         }
@@ -308,8 +326,7 @@ router.post('/login',function(req,res)
         }
     });
 });
-router.get('/sam',function(req,res){
 
 
-})
+
 module.exports = router;
