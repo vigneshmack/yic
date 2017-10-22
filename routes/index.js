@@ -1,5 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var session = require("express-session");
+router.use(session({
+    secret: 'yicauthprivate',
+    cookie:{maxAge:60*60*24*1000},
+    resave: false,
+    saveUninitialized: false
+}));
 var io=require('../bin/www');
 
 //var _db=require('./mongo');
@@ -91,7 +98,31 @@ function send_invite(email,url)                                     //sending em
 
 }
 
+function impl()
+{
+    var collect= _db.collection("yic_details");
+    collect.find({"_id" : ObjectId("59ec1fdcacdace4c6a469cbe")}).forEach(function(x)
+    {
+        var count=x.yic_members;
+    });
+    var date=new Date();
+    var year=date.getFullYear().toString();
+    var digit=year.substring(2,4);
+    var nodigits=count.toString().length();
+    if(nodigits==1)
+    {
+        var userid=digit+"YIC"+"000"+count++;
+    }
+    else if(nodigits==2)
+    {
+        var userid=digit+"YIC"+"00"+count++;
+    }
+    else
+    {
+        var userid=digit+"YIC"+"0"+count++;
+    }
 
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -178,8 +209,6 @@ router.get('/signup_autho',function(req,res){
                       h.find({_id:req.query.email}).forEach(function(x){
                           if(x.up==="n")
                           {
-
-
                               var ses=req.session;
                               ses.user_valid="y";
 
@@ -258,17 +287,29 @@ router.post('/signup_user',function(req,res){
 
     res.render("index",{title:"YIC"});
     }
-
-
-
 })
-
+router.post('/login',function(req,res)
+{
+    ses.alive=0;
+    var password=req.body.password;
+    var collection2= _db.collection("email");
+    collection2.find({_id:req.body.email},function(err,ok)
+    {
+        if(ok)
+        {
+            impl();
+            ses.alive=1;
+            res.render('dashboard');
+        }
+        else
+        {
+            console.log("go to loginpage");
+            res.render('index');
+        }
+    });
+});
 router.get('/sam',function(req,res){
 
 
 })
-
-
-
-
 module.exports = router;
