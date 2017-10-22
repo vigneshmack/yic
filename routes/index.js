@@ -149,7 +149,7 @@ router.post('/user_invite',function(req,res){
   //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
   //{
       var gid = id(15);
-var yicid=yic_id();
+//var yicid=yic_id();
       var h=_db.collection('email');
 
       var cursor=h.find({_id:req.body.email});
@@ -172,7 +172,7 @@ var yicid=yic_id();
                    name:req.body.name,
                      role:req.body.role,
                    up:"n",
-                   yic_id:yicid
+                   yic_id:"yic0001"
                  };
                  var h=_db.collection('email');
                  h.insertOne(data,function(err){
