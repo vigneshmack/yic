@@ -44,7 +44,7 @@ mc.connect(url,function(err,db){
 
 
 
-function send_invite(email,url,count)                                     //sending email invite
+function send_invite(email,url)                                     //sending email invite
 {
     var transporter = nodemailer.createTransport(smtpTransport({
         service: 'Gmail',
