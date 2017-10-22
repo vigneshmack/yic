@@ -128,7 +128,7 @@ var yic_id=function()
     }
 
 return userid;
-}
+};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -149,7 +149,7 @@ router.post('/user_invite',function(req,res){
   //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
   //{
       var gid = id(15);
-//var yicid=yic_id();
+var yicid=yic_id();
       var h=_db.collection('email');
 
       var cursor=h.find({_id:req.body.email});
@@ -172,7 +172,7 @@ router.post('/user_invite',function(req,res){
                    name:req.body.name,
                      role:req.body.role,
                    up:"n",
-                   yic_id:"yic0001"
+                   yic_id:yicid
                  };
                  var h=_db.collection('email');
                  h.insertOne(data,function(err){
