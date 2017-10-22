@@ -131,8 +131,9 @@ var yic_id=function()
         userid=digit+"YIC"+count++;
     }
 count++;
-    var h=_db.collection("yic_details");
-    h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
+
+    //var h=_db.collection("yic_details");
+    //h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
 
 
 return userid;
