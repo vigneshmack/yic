@@ -144,7 +144,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-3">
-                                <p style="font-size: 1.5em">Users</p>
+                                 <p style="font-size: 1.5em">Users</p>
                             </div>
                             <div class="pull-right col-md-1">
                                 <button type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" style="color: #0c8ec3;font-size: 2.0em"></i></button>
@@ -166,6 +166,14 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-offset-3">
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="name" type="text" class="form-control is-valid" name="name" placeholder="Name">
+                                </div>
+                            </div>
+                        </div>
                         <div class="row" style="margin-top: 5%">
                             <div class="col-md-9">
                                 <div class="input-group">
@@ -204,23 +212,28 @@
         $(document).ready(function() {
             $('#user_invite').on('click',function (e) {
                 e.preventDefault();
+                var name=$('#name').val();
                 var email=$('#email').val();
                 var role=$('#role').val();
-                alert(email);
-                if(!email.length>0)
+                if(!name.length>0)
+                {
+                    $('#snackbar').text("Enter Name");
+                    myFunction();
+                }
+                else if(!email.length>0)
                 {
                     $('#snackbar').text("Enter email address");
                     myFunction();
                 }
                 else
                 {
-                    validateEmail(email,role);
+                    validateEmail(name,email,role);
                 }
             });
 
 
-            function validateEmail(email,role) {
-                var emailReg = /^([\w-]\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            function validateEmail(name,email,role) {
+                var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                 if (!emailReg.test(email)) {
                     $('#snackbar').text("Invalid email");
                     myFunction();
@@ -231,16 +244,17 @@
                         url: '/user_invite',
                         type: "POST",
                         data: {
+                            name: name,
                             email: email,
                             role: role
                         },
                         success: function(response) {
-                            $('#myModal').modal('hide');
+
                         },
                         error: function(xhr, status, error) {
-
                         }
                     });
+
                 }
             }
         });
