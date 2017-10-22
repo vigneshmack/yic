@@ -44,7 +44,7 @@ mc.connect(url,function(err,db){
 
 
 
-function send_invite(email,url)                                     //sending email invite
+function send_invite(email,url,count)                                     //sending email invite
 {
     var transporter = nodemailer.createTransport(smtpTransport({
         service: 'Gmail',
@@ -89,9 +89,12 @@ function send_invite(email,url)                                     //sending em
         if (error) {
             return console.log(error);
         }
-        console.log('Message %s sent: %s', info.messageId, info.response);
-        console.log("Mail sent successfully");
-    });
+        else {
+            console.log('Message %s sent: %s', info.messageId, info.response);
+            console.log("Mail sent successfully");
+
+        }
+        });
 
 
 
@@ -100,10 +103,11 @@ function send_invite(email,url)                                     //sending em
 
 var yic_id=function()
 {
+    var count=0;
     var collect= _db.collection("yic_details");
     collect.find({_id:"yic101"}).forEach(function(x)
     {
-        var count=x.yic_members;
+         count=x.yic_members;
     });
     var date=new Date();
     var year=date.getFullYear().toString();
@@ -126,6 +130,10 @@ var yic_id=function()
     {
         userid=digit+"YIC"+count++;
     }
+count++;
+    var h=_db.collection("yic_details");
+    h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
+
 
 return userid;
 };
