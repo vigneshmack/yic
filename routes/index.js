@@ -57,7 +57,7 @@ function send_invite(email,url)                                     //sending em
     }));
     var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&id="+url;
     transporter.sendMail({
-        from: "sampleprogrammers@gmail.com",
+        from: "yic.jci3.1@gmail.com",
         subject:"Invitation for YIC" ,
         to: email,
         html : "<!DOCTYPE HTML>\n" +
