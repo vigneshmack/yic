@@ -103,17 +103,17 @@ function send_invite(email,url)                                     //sending em
 
 var yic_id=function()
 {
-    var count=0;
+
     var collect= _db.collection("yic_details");
     collect.find({_id:"yic101"}).forEach(function(x)
     {
-         count=x.yic_members;
+       var count=x.yic_members;
     });
     var date=new Date();
     var year=date.getFullYear().toString();
     var digit=year.substring(2,4);
     var nodigits=count.toString().length();
-    var userid="";
+    var userid=""
     if(nodigits===1)
     {
          userid=digit+"YIC"+"000"+count++;
@@ -130,7 +130,8 @@ var yic_id=function()
     {
         userid=digit+"YIC"+count++;
     }
-count++;
+
+//    count++;
 
     //var h=_db.collection("yic_details");
     //h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
