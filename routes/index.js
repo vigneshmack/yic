@@ -96,7 +96,7 @@ function send_invite(email,url)                                     //sending em
             console.log("Mail sent successfully");
 
         }
-        });
+    });
 
 
 
@@ -123,7 +123,7 @@ var invite1=function (req,res,userid,gid) {
         else
         {
             console.log("user invited:"+req.body.email+" id:"+gid);
-             send_invite(req.body.email,gid);
+            send_invite(req.body.email,gid);
         }
     });
 };
@@ -168,7 +168,7 @@ var yic_id=function(req,res,gid)
         var h=_db.collection("yic_details");
         h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
 
-       invite1(req,res,userid,gid);
+        invite1(req,res,userid,gid);
 
 
     });
@@ -182,74 +182,74 @@ var yic_id=function(req,res,gid)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'YIC' });
+    res.render('index', { title: 'YIC' });
 });
 
 router.get('/users',function(req,res){
-  res.render('users',{title:'YIC'});
+    res.render('users',{title:'YIC'});
 });
 
 
 
 router.post('/user_invite',function(req,res){
-                                                  //need to check the session
-  //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
-  //{
-      var gid = id(15);
-      var h=_db.collection('email');
+    //need to check the session
+    //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
+    //{
+    var gid = id(15);
+    var h=_db.collection('email');
 
-      var cursor=h.find({_id:req.body.email});
+    var cursor=h.find({_id:req.body.email});
 
-      cursor.count(function (err,c){
-         if(err){
-             console.log(err);
-         }
-           else
-         {
-             if(c===1)
-             {
-                 console.log("user already invited");
-                 res.send("user already invited");
-             }
-             else
-             {
-                 console.log("yes");
-                  yic_id(req,res,gid);
+    cursor.count(function (err,c){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            if(c===1)
+            {
+                console.log("user already invited");
+                res.send("user already invited");
+            }
+            else
+            {
+                console.log("yes");
+                yic_id(req,res,gid);
 
-             }
-         }
-  });
-
-  //}
-  //else
-  //{
-
-  //}
+            }
+        }
     });
+
+    //}
+    //else
+    //{
+
+    //}
+});
 
 
 router.get('/signup_autho',function(req,res){
 
     if(req.query.id!==undefined) {
         var h = _db.collection("email");
-         var cursor=h.find({_id: req.query.email,id:req.query.id});
-          cursor.count(function(err,c){
-              if(err)
-              {
-                  console.log(err)
-              }
-              else
-              {
-                  if(c==1)
-                  {
-                      var h=_db.collection("email");
-                      h.find({_id:req.query.email}).forEach(function(x){
-                          if(x.up==="n")
-                          {
-                              var ses=req.session;
-                              ses.user_valid="y";
-                              ses.user_id=req.query.id;
-                              console.log("user visited "+req.query.email);
+        var cursor=h.find({_id: req.query.email,id:req.query.id});
+        cursor.count(function(err,c){
+            if(err)
+            {
+                console.log(err)
+            }
+            else
+            {
+                if(c==1)
+                {
+                    var h=_db.collection("email");
+                    h.find({_id:req.query.email}).forEach(function(x){
+                        if(x.up==="n")
+                        {
+                            var ses=req.session;
+                            ses.user_valid="y";
+                            ses.user_id=req.query.id;
+                            console.log("user visited "+req.query.email);
                             /*  var h=_db.collection("email");
                               var role="";
                               h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
@@ -257,19 +257,19 @@ router.get('/signup_autho',function(req,res){
                               });*/
 
                             //  res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
-                                res.render("signup",{id:req.query.id});
+                            res.render("signup",{id:req.query.id});
 
-                          }
-                      else
-                          {
-                              res.send("Invalid credential access :(");
-                          }
-                      })
-                                        }
-                  else
-                      res.send("Invalid credential access :(");
-              }
-          });
+                        }
+                        else
+                        {
+                            res.send("Invalid credential access :(");
+                        }
+                    })
+                }
+                else
+                    res.send("Invalid credential access :(");
+            }
+        });
     }
 
 });
@@ -280,7 +280,7 @@ router.get("/signup",function(req,res) {
 
     if(ses.user_valid==="y")
     {
-res.send("yes");
+        res.send("yes");
 //res.render("signup");
     }
     else
@@ -302,14 +302,14 @@ var fun=function (req,res,email,name,role,id) {
         password:req.body.password
     };
 
-  var h=_db.collection("users");
+    var h=_db.collection("users");
 
     h.insertOne(data);
 
     h=_db.collection('email');
     h.updateOne({_id:email},{$set:{up:"y"}});
-     var s=req.session;
-     s.user_valid="n";
+    var s=req.session;
+    s.user_valid="n";
 
 
 
@@ -321,7 +321,7 @@ var s_user=function(req,res,user_id){
     var h=_db.collection("email");
     var email,name,role,id;
     h.find({id:user_id}).forEach(function(x){
-       JSON.stringify(x);
+        JSON.stringify(x);
         email=x._id;
         name=x.name;
         role=x.role;
@@ -341,9 +341,9 @@ router.post('/signup_user',function(req,res){
     if(ses.user_valid==="y")
     {
 
-      s_user(req,res,ses.user_id);
+        s_user(req,res,ses.user_id);
 
-      res.render("index",{title:"yic"});
+        res.render("index",{title:"yic"});
 
     }
 
@@ -370,13 +370,5 @@ router.post('/login',function(req,res)
         }
     });
 });
-
-
-
-
-
-
-
-
 
 module.exports = router;
