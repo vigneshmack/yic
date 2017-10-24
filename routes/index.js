@@ -248,7 +248,7 @@ router.get('/signup_autho',function(req,res){
                           {
                               var ses=req.session;
                               ses.user_valid="y";
-
+                              ses.user_id=req.query.id;
                               console.log("user visited "+req.query.email);
                             /*  var h=_db.collection("email");
                               var role="";
@@ -316,10 +316,11 @@ var fun=function (req,res,email,name,role,id) {
 
 
 var s_user=function(req,res){
-
+   var ses=req.session();
+   var u_id=ses.user_id;
     var h=_db.collection("email");
     var email,name,role,id;
-    h.find({id:req.query.id}).forEach(function(x){
+    h.find({id:user_id}).forEach(function(x){
        JSON.parse(x);
         email=x.email;
         name=x.name;
