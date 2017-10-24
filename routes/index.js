@@ -335,7 +335,6 @@ var s_user=function(req,res,user_id){
 
 
 
-
 router.post('/signup_user',function(req,res){
     var ses=req.session;
     if(ses.user_valid==="y")
@@ -370,5 +369,31 @@ router.post('/login',function(req,res)
         }
     });
 });
+
+router.get('/home', function(req, res, next) {
+    res.render('home', { title: 'YIC' });
+});
+router.get('/projects', function(req, res, next) {
+    res.render('projects', { title: 'YIC' });
+});
+router.get('/dashboard', function(req, res, next) {
+    res.render('dashboard', { title: 'YIC' });
+});
+router.get('/events', function(req, res, next) {
+    res.render('events', { title: 'YIC' });
+});
+router.get('/collages', function(req, res, next) {
+    res.render('collages', { title: 'YIC' });
+});
+router.get('/users', function(req, res, next) {
+    res.render('users', { title: 'YIC' });
+});
+router.get('/settings', function(req, res, next) {
+    res.render('settings', { title: 'YIC' });
+});
+router.get('/profile', function(req, res, next) {
+    res.render('profile', { title: 'YIC' });
+});
+
 
 module.exports = router;
