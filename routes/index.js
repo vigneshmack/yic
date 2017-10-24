@@ -290,9 +290,10 @@ router.get("/signup",function(req,res) {
 
 var fun=function (req,res,email,name,role,id) {
 
-    var cipher = crypto.createCipher("aes-256-ctr","d6F3Efeq");
-    var crypted = cipher.update(req.body.password,"utf8","hex");
-    crypted += cipher.final("hex");
+    var cipher = crypto.createCipher('aes-256-ctr','d6F3Efeq');
+    var crypted = cipher.update(req.body.password,'utf8','hex');
+    crypted += cipher.final('hex');
+    console.log("ENCRYPTION PASSWORD:"+crypted);
     var data={
         _id:id,
         email:email,
@@ -356,8 +357,6 @@ router.post('/login',function(req,res)
       var p=x.password;
       if((e===req.body.email)&&(p===req.body.password))
       {
-            var loginses=req.session;
-            loginses.email=req.body.email;
             console.log("Login successfull");
             res.send("Login successfull");
       }
@@ -370,6 +369,8 @@ router.post('/login',function(req,res)
 });
 
 router.get('/home', function(req, res, next) {
+    var dashses=req.session;
+    dashses.email=req.body.email;
     res.render('home', { title: 'YIC' });
 });
 router.get('/projects', function(req, res, next) {
