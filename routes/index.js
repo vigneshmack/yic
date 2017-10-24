@@ -289,7 +289,7 @@ res.send("yes");
     }
 
 
-})
+});
 
 
 var fun=function (req,res,email,name,role,id) {
@@ -320,6 +320,7 @@ var s_user=function(req,res){
     var h=_db.collection("email");
     var email,name,role,id;
     h.find({id:req.query.id}).forEach(function(x){
+       JSON.parse(x);
         email=x.email;
         name=x.name;
         role=x.role;
