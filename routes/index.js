@@ -310,7 +310,7 @@ var fun=function (req,res,email,name,role,id) {
     h.updateOne({_id:email},{$set:{up:"y"}});
      var s=req.session;
      s.user_valid="n";
-    res.render("index",{title:"yic"});
+
 
 
 };
@@ -343,7 +343,7 @@ router.post('/signup_user',function(req,res){
 
       s_user(req,res,ses.user_id);
 
-
+      res.render("index",{title:"yic"});
 
     }
 
