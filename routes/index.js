@@ -149,10 +149,6 @@ router.get('/users',function(req,res){
   res.render('users',{title:'YIC'});
 });
 
-router.get('/signup',function(req,res) {
-    res.render('signup', {title: 'Express'});
-});
-
 
 router.post('/user_invite',function(req,res){
                                                   //need to check the session
@@ -276,14 +272,15 @@ router.post('/signup_user',function(req,res){
     if(ses.user_valid==="y")
     {
 
-
         var h=_db.collection("email");
-
-        h.find({id:req.query.id}).forEach(function(x){
+        console.log(req.body.id);
+        var email='';
+        h.find({id:req.body.id}).forEach(function(x){
+            console.log("check");
          email=x.email;
          name=x.name;
          role=x.role;
-        })
+        });
 
 
 
@@ -293,7 +290,8 @@ router.post('/signup_user',function(req,res){
             name:name,
             role:role,
             password:req.body.password
-        }
+        };
+
 
          h=_db.collection("users");
 
@@ -302,7 +300,7 @@ router.post('/signup_user',function(req,res){
         h=_db.collection('email');
      h.updateOne({_id:email},{$set:{up:"y"}});
 
-    res.render("index",{title:"YIC"});
+    res.send("success");
     }
 });
 
@@ -327,6 +325,36 @@ router.post('/login',function(req,res)
     });
 });
 
+//added by bv
+router.get('/home',function(req,res)
+{
+    res.render("home",{title:'YIC'});
+});
+router.get('/dashboard',function (req,res)
+{
+   res.render("dashboard",{title:'YIC'});
+});
+router.get('/projects',function (req,res)
+{
+    res.render("projects",{title:'YIC'});
+});
+router.get('/events',function (req,res)
+{
+    res.render("events",{title:'YIC'});
+});
+router.get('/collages',function (req,res)
+{
+    res.render("collages",{title:'YIC'});
+});
 
+router.get('/settings',function (req,res)
+{
+    res.render("settings",{title:'YIC'});
+});
+
+router.get('/profile',function (req,res)
+{
+    res.render("profile",{title:'YIC',profile_name:"vignesh baskar"});
+});
 
 module.exports = router;
