@@ -310,7 +310,7 @@ var fun=function (req,res,email,name,role,id) {
     h.updateOne({_id:email},{$set:{up:"y"}});
      var s=req.session;
      s.user_valid="n";
-    res.redirect("/index");
+    res.render("index",{title:"yic"});
 
 
 };
