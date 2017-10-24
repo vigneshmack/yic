@@ -315,13 +315,12 @@ var fun=function (req,res,email,name,role,id) {
 };
 
 
-var s_user=function(req,res){
-   var ses=req.session();
-   var u_id=ses.user_id;
+var s_user=function(req,res,user_id){
+
     var h=_db.collection("email");
     var email,name,role,id;
     h.find({id:user_id}).forEach(function(x){
-       JSON.parse(x);
+       JSON.stringify(x);
         email=x.email;
         name=x.name;
         role=x.role;
@@ -340,7 +339,7 @@ router.post('/signup_user',function(req,res){
     if(ses.user_valid==="y")
     {
 
-      s_user(req,res);
+      s_user(req,res,ses.user_id);
 
 
 
