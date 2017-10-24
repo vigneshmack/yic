@@ -308,8 +308,9 @@ var fun=function (req,res,email,name,role,id) {
 
     h=_db.collection('email');
     h.updateOne({_id:email},{$set:{up:"y"}});
-
-    res.render("index",{title:"YIC"});
+     var s=req.session;
+     s.user_valid="n";
+    res.redirect("/index");
 
 
 };
