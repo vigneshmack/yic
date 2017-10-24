@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var session = require("express-session");
+var promise=require('promise');
+
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -101,43 +103,81 @@ function send_invite(email,url)                                     //sending em
 
 }
 
-var yic_id=function()
+var invite1=function (req,res,userid,gid) {
+
+    var data={
+        _id:req.body.email,
+        id:gid,
+        name:req.body.name,
+        role:req.body.role,
+        up:"n",
+        yic_id:userid
+    };
+    console.log(data);
+    var h=_db.collection('email');
+    h.insertOne(data,function(err){
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log("user invited:"+req.body.email+" id:"+gid);
+             send_invite(req.body.email,gid);
+        }
+    });
+};
+
+
+var yic_id=function(req,res,gid)
 {
 
+    var count=0;
+    var userid="";
     var collect= _db.collection("yic_details");
-    collect.find({_id:"yic101"}).forEach(function(x)
-    {
-       var count=x.yic_members;
+    collect.find({_id:"yic101"}).forEach(function(x) {
+        JSON.stringify(x);
+        count = x.yic_members;
+        console.log("found:");
+        console.log(count);
+        var date = new Date();
+        var year = date.getFullYear().toString();
+        var digit = year.substring(2, 4);
+        var nodigits = count.toString().length;
+
+
+        count++;
+
+        if (nodigits == 1) {
+            console.log("yeeeeees");
+            userid = digit + "YIC" + "000" + count;
+            console.log(userid);
+        }
+        else if (nodigits === 2) {
+            userid = digit + "YIC" + "00" + count;
+        }
+        else if (nodigits === 3) {
+            userid = digit + "YIC" + "0" + count;
+        }
+        else {
+            userid = digit + "YIC" + count;
+        }
+
+
+
+        var h=_db.collection("yic_details");
+        h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
+
+       invite1(req,res,userid,gid);
+
+
     });
-    var date=new Date();
-    var year=date.getFullYear().toString();
-    var digit=year.substring(2,4);
-    var nodigits=count.toString().length();
-    var userid=""
-    if(nodigits===1)
-    {
-         userid=digit+"YIC"+"000"+count++;
-    }
-    else if(nodigits===2)
-    {
-         userid=digit+"YIC"+"00"+count++;
-    }
-    else if(nodigits===3)
-    {
-         userid=digit+"YIC"+"0"+count++;
-    }
-    else
-    {
-        userid=digit+"YIC"+count++;
-    }
-
-//    count++;
-
-    //var h=_db.collection("yic_details");
-    //h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
 
 
-return userid;
+
+
+
+
 };
 
 /* GET home page. */
@@ -149,9 +189,6 @@ router.get('/users',function(req,res){
   res.render('users',{title:'YIC'});
 });
 
-router.get('/signup',function(req,res) {
-    res.render('signup', {title: 'Express'});
-});
 
 
 router.post('/user_invite',function(req,res){
@@ -159,7 +196,6 @@ router.post('/user_invite',function(req,res){
   //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
   //{
       var gid = id(15);
-var yicid=yic_id();
       var h=_db.collection('email');
 
       var cursor=h.find({_id:req.body.email});
@@ -170,32 +206,16 @@ var yicid=yic_id();
          }
            else
          {
-             if(c==1)
+             if(c===1)
              {
+                 console.log("user already invited");
                  res.send("user already invited");
              }
              else
              {
-               var data={
-                     _id:req.body.email,
-                     id:gid,
-                   name:req.body.name,
-                     role:req.body.role,
-                   up:"n",
-                   yic_id:yicid
-                 };
-                 var h=_db.collection('email');
-                 h.insertOne(data,function(err){
-                     if(err)
-                     {
-                         console.log(err);
-                     }
-                     else
-                     {
-                         console.log("user invited:"+req.body.email+" id:"+gid);
-                    send_invite(req.body.email,gid);
-                     }
-                 });
+                 console.log("yes");
+                  yic_id(req,res,gid);
+
              }
          }
   });
@@ -260,8 +280,8 @@ router.get("/signup",function(req,res) {
 
     if(ses.user_valid==="y")
     {
-
-res.render("signup");
+res.send("yes");
+//res.render("signup");
     }
     else
     {
@@ -278,22 +298,23 @@ router.post('/signup_user',function(req,res){
 
 
         var h=_db.collection("email");
-
+      var email,name,role,id;
         h.find({id:req.query.id}).forEach(function(x){
          email=x.email;
          name=x.name;
          role=x.role;
-        })
+         id=x.yic_id
+        });
 
 
 
         var data={
-
+            _id:id,
             email:email,
             name:name,
             role:role,
             password:req.body.password
-        }
+        };
 
          h=_db.collection("users");
 
@@ -326,6 +347,12 @@ router.post('/login',function(req,res)
         }
     });
 });
+
+
+
+
+
+
 
 
 
