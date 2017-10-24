@@ -28,16 +28,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            var id = GetParameterValues('id');
-            function GetParameterValues(param) {
-                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                for (var i = 0; i < url.length; i++) {
-                    var urlparam = url[i].split('=');
-                    if (urlparam[0] == param) {
-                        return urlparam[1];
-                    }
-                }
-            }
+            var id = $("#id_hidden").text();
+            alert(id);
             $('#signup_submit').on('click',function (e) {
                 e.preventDefault();
                 var password=$('#password').val();
@@ -59,6 +51,7 @@
                 }
                 else
                 {
+                    alert(id+""+password);
                     $.ajax({
                         url: '/signup_user',
                         type: "POST",
@@ -68,6 +61,9 @@
                         },
                         success: function(response) {
 
+                        },
+                        complete:function (r) {
+                            alert(r.responseText);
                         },
                         error: function(xhr, status, error) {
                         }
@@ -160,6 +156,7 @@
         </div>
     </div>
     <div id="snackbar">Some text some message..</div>
+    <div id="id_hidden" style="visibility: hidden;"><%=id%></div>
 </div>
 </body>
 </html>
