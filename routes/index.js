@@ -288,12 +288,9 @@ router.get("/signup",function(req,res) {
 });
 
 
-var fun=function (req,res,email,name,role,id) {
+var fun=function (req,res,email,name,role,id,crypted) {
 
-    var cipher = crypto.createCipher('aes-256-ctr','d6F3Efeq');
-    var crypted = cipher.update(req.body.password,'utf8','hex');
-    crypted += cipher.final('hex');
-    console.log("ENCRYPTION PASSWORD:"+crypted);
+
     var data={
         _id:id,
         email:email,
@@ -318,6 +315,10 @@ var fun=function (req,res,email,name,role,id) {
 
 var s_user=function(req,res,user_id){
 
+    var cipher = crypto.createCipher("aes-256-ctr","d6F3Efeq");
+    var crypted = cipher.update(req.body.password,"utf8","hex");
+    crypted += cipher.final("hex");
+    console.log("ENCRYPTION PASSWORD:"+crypted);
     var h=_db.collection("email");
     var email,name,role,id;
     h.find({id:user_id}).forEach(function(x){
@@ -326,7 +327,7 @@ var s_user=function(req,res,user_id){
         name=x.name;
         role=x.role;
         id=x.yic_id;
-        fun(req,res,email,name,role,id);
+        fun(req,res,email,name,role,id,crypted);
     });
 
 
