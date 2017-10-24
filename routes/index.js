@@ -321,7 +321,7 @@ var s_user=function(req,res,user_id){
     var email,name,role,id;
     h.find({id:user_id}).forEach(function(x){
        JSON.stringify(x);
-        email=x.email;
+        email=x._id;
         name=x.name;
         role=x.role;
         id=x.yic_id
