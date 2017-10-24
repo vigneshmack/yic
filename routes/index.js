@@ -324,10 +324,11 @@ var s_user=function(req,res,user_id){
         email=x._id;
         name=x.name;
         role=x.role;
-        id=x.yic_id
+        id=x.yic_id;
+        fun(req,res,email,name,role,id);
     });
 
-fun(req,res,email,name,role,id);
+
 
 };
 
