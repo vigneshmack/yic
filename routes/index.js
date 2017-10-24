@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var session = require("express-session");
 var promise=require('promise');
-
+var crypto=require("crypto");
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -12,11 +12,7 @@ router.use(session({
 var io=require('../bin/www');
 
 //var _db=require('./mongo');
-
 var id=require('idgen');
-
-
-
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
@@ -246,8 +242,8 @@ router.get('/signup_autho',function(req,res){
                     h.find({_id:req.query.email}).forEach(function(x){
                         if(x.up==="n")
                         {
-                            var ses=req.session;
-                            ses.user_valid="y";
+                            var ses=req.session
+                            ses.user_valid="y";;
                             ses.user_id=req.query.id;
                             console.log("user visited "+req.query.email);
                             /*  var h=_db.collection("email");
@@ -292,14 +288,15 @@ router.get("/signup",function(req,res) {
 });
 
 
-var fun=function (req,res,email,name,role,id) {
+var fun=function (req,res,email,name,role,id,crypted) {
+
 
     var data={
         _id:id,
         email:email,
         name:name,
         role:role,
-        password:req.body.password
+        password:crypted
     };
 
     var h=_db.collection("users");
@@ -318,6 +315,10 @@ var fun=function (req,res,email,name,role,id) {
 
 var s_user=function(req,res,user_id){
 
+    var cipher = crypto.createCipher("aes-256-ctr","d6F3Efeq");
+    var crypted = cipher.update(req.body.password,"utf8","hex");
+    crypted += cipher.final("hex");
+    console.log("ENCRYPTION PASSWORD:"+crypted);
     var h=_db.collection("email");
     var email,name,role,id;
     h.find({id:user_id}).forEach(function(x){
@@ -326,7 +327,7 @@ var s_user=function(req,res,user_id){
         name=x.name;
         role=x.role;
         id=x.yic_id;
-        fun(req,res,email,name,role,id);
+        fun(req,res,email,name,role,id,crypted);
     });
 
 
@@ -351,26 +352,26 @@ router.post('/signup_user',function(req,res){
 
 router.post('/login',function(req,res)
 {
-    ses.alive=0;
-    var password=req.body.password;
-    var collection2= _db.collection("email");
-    collection2.find({_id:req.body.email},function(err,ok)
-    {
-        if(ok)
-        {
-
-            ses.alive=1;
-            res.render('dashboard');
-        }
-        else
-        {
-            console.log("go to loginpage");
-            res.render('index');
-        }
+    var collection2= _db.collection("users");
+    collection2.find({"email":req.body.email}).forEach(function(x){
+      var e=x.email;
+      var p=x.password;
+      if((e===req.body.email)&&(p===req.body.password))
+      {
+            console.log("Login successfull");
+            res.send("Login successfull");
+      }
+      else
+      {
+          console.log("Login unsuccessfull");
+          res.send("login unsuccessfull");
+      }
     });
 });
 
 router.get('/home', function(req, res, next) {
+    var dashses=req.session;
+    dashses.email=req.body.email;
     res.render('home', { title: 'YIC' });
 });
 router.get('/projects', function(req, res, next) {
