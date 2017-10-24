@@ -32,7 +32,7 @@
             position: fixed;
             z-index:999;
             left: 50%;
-            top: 30px;
+            bottom: 30px;
             font-size: 17px;
         }
 
@@ -43,23 +43,23 @@
         }
 
         @-webkit-keyframes fadein {
-            from {top: 0; opacity: 0;}
-            to {top: 30px; opacity: 1;}
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
         }
 
         @keyframes fadein {
-            from {top: 0; opacity: 0;}
-            to {top: 30px; opacity: 1;}
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
         }
 
         @-webkit-keyframes fadeout {
-            from {top: 30px; opacity: 1;}
-            to {top: 0; opacity: 0;}
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
         }
 
         @keyframes fadeout {
-            from {top: 30px; opacity: 1;}
-            to {top: 0; opacity: 0;}
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
         }
     </style>
     <!--STYLES END-->
@@ -648,7 +648,9 @@
         if (!emailReg.test(user)) {
             $('#snackbar').text("Invalid email");
             myFunction();
-        } else {
+        }
+        else
+        {
             $('#snackbar').text("Sending Request");
             myFunction();
             $.ajax({

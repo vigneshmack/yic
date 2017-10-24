@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var session = require("express-session");
+var promise=require('promise');
+
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -57,7 +59,7 @@ function send_invite(email,url)                                     //sending em
     }));
     var link="http://yic3.herokuapp.com/signup_autho?email="+email+"&id="+url;
     transporter.sendMail({
-        from: "sampleprogrammers@gmail.com",
+        from: "yic.jci3.1@gmail.com",
         subject:"Invitation for YIC" ,
         to: email,
         html : "<!DOCTYPE HTML>\n" +
@@ -89,8 +91,11 @@ function send_invite(email,url)                                     //sending em
         if (error) {
             return console.log(error);
         }
-        console.log('Message %s sent: %s', info.messageId, info.response);
-        console.log("Mail sent successfully");
+        else {
+            console.log('Message %s sent: %s', info.messageId, info.response);
+            console.log("Mail sent successfully");
+
+        }
     });
 
 
@@ -98,141 +103,173 @@ function send_invite(email,url)                                     //sending em
 
 }
 
-function impl()
+var invite1=function (req,res,userid,gid) {
+
+    var data={
+        _id:req.body.email,
+        id:gid,
+        name:req.body.name,
+        role:req.body.role,
+        up:"n",
+        yic_id:userid
+    };
+    console.log(data);
+    var h=_db.collection('email');
+    h.insertOne(data,function(err){
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log("user invited:"+req.body.email+" id:"+gid);
+            send_invite(req.body.email,gid);
+        }
+    });
+};
+
+
+var yic_id=function(req,res,gid)
 {
-    var collect= _db.collection("yic_details");
-    collect.find({"_id" : ObjectId("59ec1fdcacdace4c6a469cbe")}).forEach(function(x)
-    {
-        var count=x.yic_members;
-    });
-    var date=new Date();
-    var year=date.getFullYear().toString();
-    var digit=year.substring(2,4);
-    var nodigits=count.toString().length();
-    if(nodigits==1)
-    {
-        var userid=digit+"YIC"+"000"+count++;
-    }
-    else if(nodigits==2)
-    {
-        var userid=digit+"YIC"+"00"+count++;
-    }
-    else
-    {
-        var userid=digit+"YIC"+"0"+count++;
-    }
 
-}
+    var count=0;
+    var userid="";
+    var collect= _db.collection("yic_details");
+    collect.find({_id:"yic101"}).forEach(function(x) {
+        JSON.stringify(x);
+        count = x.yic_members;
+        console.log("found:");
+        console.log(count);
+        var date = new Date();
+        var year = date.getFullYear().toString();
+        var digit = year.substring(2, 4);
+        var nodigits = count.toString().length;
+
+
+        count++;
+
+        if (nodigits == 1) {
+            console.log("yeeeeees");
+            userid = digit + "YIC" + "000" + count;
+            console.log(userid);
+        }
+        else if (nodigits === 2) {
+            userid = digit + "YIC" + "00" + count;
+        }
+        else if (nodigits === 3) {
+            userid = digit + "YIC" + "0" + count;
+        }
+        else {
+            userid = digit + "YIC" + count;
+        }
+
+
+
+        var h=_db.collection("yic_details");
+        h.updateOne({_id:"yic101"},{$set:{yic_members:count}});
+
+        invite1(req,res,userid,gid);
+
+
+    });
+
+
+
+
+
+
+};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'YIC' });
+    res.render('index', { title: 'YIC' });
 });
 
 router.get('/users',function(req,res){
-  res.render('users',{title:'YIC'});
+    res.render('users',{title:'YIC'});
 });
 
-router.get('/signup',function(req,res) {
-    res.render('signup', {title: 'Express'});
-});
 
 
 router.post('/user_invite',function(req,res){
-                                                  //need to check the session
-  //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
-  //{
-      var gid = id(15);
+    //need to check the session
+    //if(req.body.email!=="" && req.body.role!=="")   //need to check the persons role
+    //{
+    var gid = id(15);
+    var h=_db.collection('email');
 
-      var h=_db.collection('email');
+    var cursor=h.find({_id:req.body.email});
 
-      var cursor=h.find({_id:req.body.email});
+    cursor.count(function (err,c){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            if(c===1)
+            {
+                console.log("user already invited");
+                res.send("user already invited");
+            }
+            else
+            {
+                console.log("yes");
+                yic_id(req,res,gid);
 
-      cursor.count(function (err,c){
-         if(err){
-             console.log(err);
-         }
-           else
-         {
-             if(c==1)
-             {
-                 res.send("user already invited");
-             }
-             else
-             {
-               var data={
-                     _id:req.body.email,
-                     id:gid,
-                   name:req.body.name,
-                     role:req.body.role,
-                   up:"n"
-                 };
-                 var h=_db.collection('email');
-                 h.insertOne(data,function(err){
-                     if(err)
-                     {
-                         console.log(err);
-                     }
-                     else
-                     {
-                         console.log("user invited:"+req.body.email+" id:"+gid);
-                    send_invite(req.body.email,gid);
-                     }
-                 });
-             }
-         }
-  });
-
-  //}
-  //else
-  //{
-
-  //}
+            }
+        }
     });
+
+    //}
+    //else
+    //{
+
+    //}
+});
 
 
 router.get('/signup_autho',function(req,res){
 
     if(req.query.id!==undefined) {
         var h = _db.collection("email");
-         var cursor=h.find({_id: req.query.email,id:req.query.id});
-          cursor.count(function(err,c){
-              if(err)
-              {
-                  console.log(err)
-              }
-              else
-              {
-                  if(c==1)
-                  {
-                      var h=_db.collection("email");
-                      h.find({_id:req.query.email}).forEach(function(x){
-                          if(x.up==="n")
-                          {
-                              var ses=req.session;
-                              ses.user_valid="y";
-
-                              console.log("user visited "+req.query.email);
-                              var h=_db.collection("email");
+        var cursor=h.find({_id: req.query.email,id:req.query.id});
+        cursor.count(function(err,c){
+            if(err)
+            {
+                console.log(err)
+            }
+            else
+            {
+                if(c==1)
+                {
+                    var h=_db.collection("email");
+                    h.find({_id:req.query.email}).forEach(function(x){
+                        if(x.up==="n")
+                        {
+                            var ses=req.session;
+                            ses.user_valid="y";
+                            ses.user_id=req.query.id;
+                            console.log("user visited "+req.query.email);
+                            /*  var h=_db.collection("email");
                               var role="";
                               h.find({_id:req.query.email,id:req.query.id}).forEach(function(x){
                                   role=x.role;
-                              });
+                              });*/
 
-                              res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
+                            //  res.redirect("/signup?id="+req.query.id);  //email="+req.query.email+"&role="+role);
+                            res.render("signup",{id:req.query.id});
 
-
-                          }
-                      else
-                          {
-                              res.send("Invalid credential access :(");
-                          }
-                      })
-                                        }
-                  else
-                      res.send("Invalid credential access :(");
-              }
-          });
+                        }
+                        else
+                        {
+                            res.send("Invalid credential access :(");
+                        }
+                    })
+                }
+                else
+                    res.send("Invalid credential access :(");
+            }
+        });
     }
 
 });
@@ -243,8 +280,8 @@ router.get("/signup",function(req,res) {
 
     if(ses.user_valid==="y")
     {
-
-res.render("signup");
+        res.send("yes");
+//res.render("signup");
     }
     else
     {
@@ -252,42 +289,66 @@ res.render("signup");
     }
 
 
-})
+});
+
+
+var fun=function (req,res,email,name,role,id) {
+
+    var data={
+        _id:id,
+        email:email,
+        name:name,
+        role:role,
+        password:req.body.password
+    };
+
+    var h=_db.collection("users");
+
+    h.insertOne(data);
+
+    h=_db.collection('email');
+    h.updateOne({_id:email},{$set:{up:"y"}});
+    var s=req.session;
+    s.user_valid="n";
+
+
+
+};
+
+
+var s_user=function(req,res,user_id){
+
+    var h=_db.collection("email");
+    var email,name,role,id;
+    h.find({id:user_id}).forEach(function(x){
+        JSON.stringify(x);
+        email=x._id;
+        name=x.name;
+        role=x.role;
+        id=x.yic_id;
+        fun(req,res,email,name,role,id);
+    });
+
+
+
+};
+
+
 
 router.post('/signup_user',function(req,res){
     var ses=req.session;
     if(ses.user_valid==="y")
     {
 
+        s_user(req,res,ses.user_id);
 
-        var h=_db.collection("email");
+        res.render("index",{title:"yic"});
 
-        h.find({id:req.query.id}).forEach(function(x){
-         email=x.email;
-         name=x.name;
-         role=x.role;
-        })
-
-
-
-        var data={
-
-            email:email,
-            name:name,
-            role:role,
-            password:req.body.password
-        }
-
-         h=_db.collection("users");
-
-        h.insertOne(data);
-
-        h=_db.collection('email');
-     h.updateOne({_id:email},{$set:{up:"y"}});
-
-    res.render("index",{title:"YIC"});
     }
-})
+
+
+});
+
 router.post('/login',function(req,res)
 {
     ses.alive=0;
@@ -297,7 +358,7 @@ router.post('/login',function(req,res)
     {
         if(ok)
         {
-            impl();
+
             ses.alive=1;
             res.render('dashboard');
         }
@@ -308,8 +369,31 @@ router.post('/login',function(req,res)
         }
     });
 });
-router.get('/sam',function(req,res){
+
+router.get('/home', function(req, res, next) {
+    res.render('home', { title: 'YIC' });
+});
+router.get('/projects', function(req, res, next) {
+    res.render('projects', { title: 'YIC' });
+});
+router.get('/dashboard', function(req, res, next) {
+    res.render('dashboard', { title: 'YIC' });
+});
+router.get('/events', function(req, res, next) {
+    res.render('events', { title: 'YIC' });
+});
+router.get('/collages', function(req, res, next) {
+    res.render('collages', { title: 'YIC' });
+});
+router.get('/users', function(req, res, next) {
+    res.render('users', { title: 'YIC' });
+});
+router.get('/settings', function(req, res, next) {
+    res.render('settings', { title: 'YIC' });
+});
+router.get('/profile', function(req, res, next) {
+    res.render('profile', { title: 'YIC' });
+});
 
 
-})
 module.exports = router;
