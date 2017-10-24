@@ -291,40 +291,60 @@ res.send("yes");
 
 })
 
+
+var fun=function (req,res,email,name,role,id) {
+
+    var data={
+        _id:id,
+        email:email,
+        name:name,
+        role:role,
+        password:req.body.password
+    };
+
+  var h=_db.collection("users");
+
+    h.insertOne(data);
+
+    h=_db.collection('email');
+    h.updateOne({_id:email},{$set:{up:"y"}});
+
+    res.render("index",{title:"YIC"});
+
+
+};
+
+
+var s_user=function(req,res){
+
+    var h=_db.collection("email");
+    var email,name,role,id;
+    h.find({id:req.query.id}).forEach(function(x){
+        email=x.email;
+        name=x.name;
+        role=x.role;
+        id=x.yic_id
+    });
+
+fun(req,res,email,name,role,id);
+
+};
+
+
+
+
 router.post('/signup_user',function(req,res){
     var ses=req.session;
     if(ses.user_valid==="y")
     {
 
-
-        var h=_db.collection("email");
-      var email,name,role,id;
-        h.find({id:req.query.id}).forEach(function(x){
-         email=x.email;
-         name=x.name;
-         role=x.role;
-         id=x.yic_id
-        });
+      s_user(req,res);
 
 
 
-        var data={
-            _id:id,
-            email:email,
-            name:name,
-            role:role,
-            password:req.body.password
-        };
-
-         h=_db.collection("users");
-
-        h.insertOne(data);
-
-        h=_db.collection('email');
-     h.updateOne({_id:email},{$set:{up:"y"}});
-
-    res.render("index",{title:"YIC"});
     }
+
+
 });
 
 router.post('/login',function(req,res)
