@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
@@ -25,94 +24,6 @@
     <script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
     <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script src="assets/scripts/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(".main-content").load('/dashboard');
-            $('#nav_dashboard').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_dashboard');
-                $(".main-content").load('/dashboard');
-            });
-            $('#nav_projects').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_projects');
-                $(".main-content").load('/projects');
-            });
-            $('#nav_events').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_events');
-                $(".main-content").load('/events');
-            });
-            $('#nav_collages').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_collages');
-                $(".main-content").load('/collages');
-            });
-            $('#nav_users').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_users');
-                $(".main-content").load('/users');
-            });
-            $('#nav_settings').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_settings');
-                $(".main-content").load('/settings');
-            });
-            $('#nav_profile').on('click',function (e) {
-                e.preventDefault();
-                $('.nav li a').removeClass('active');
-                $(".main-content").load('/profile');
-            });
-            function remove_add_active(name) {
-                $('.nav li a').removeClass('active');
-                $('#'+name +' a').addClass('active');
-            }
-            });
-    </script>
-    <style>
-        #snackbar {
-            visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #6978df;
-            color: #fff;
-            text-align: center;
-            border-radius: 2px;
-            padding: 16px;
-            position: fixed;
-            z-index: 999999;
-            left: 50%;
-            bottom: 30px;
-            font-size: 17px;
-        }
-
-        #snackbar.show {
-            visibility: visible;
-            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
-        @-webkit-keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @-webkit-keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
-
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
-    </style>
 </head>
 <body>
 <!-- WRAPPER -->
@@ -151,10 +62,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li id="nav_profile"><a><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-                            <li><a><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                            <li id="nav_settings"><a><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-                            <li><a><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                            <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+                            <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+                            <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                            <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -167,12 +78,12 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li id="nav_dashboard"><a  class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-                    <li id="nav_projects"><a  class=""><i class="lnr lnr-code"></i> <span>Projects</span></a></li>
-                    <li id="nav_events"><a  class=""><i class="lnr lnr-calendar-full"></i> <span>Events</span></a></li>
-                    <li id="nav_collages"><a  class=""><i class="lnr lnr-graduation-hat"></i> <span>Collages</span></a></li>
-                    <li id="nav_users"><a class=""><i class="lnr lnr-user"></i> <span>Users</span></a></li>
-                    <li id="nav_settings"><a  class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                    <li><a href="dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+                    <li><a href="projects" class=""><i class="lnr lnr-code"></i> <span>Projects</span></a></li>
+                    <li><a href="events" class=""><i class="lnr lnr-calendar-full"></i> <span>Events</span></a></li>
+                    <li><a href="collages" class=""><i class="lnr lnr-graduation-hat"></i> <span>Collages</span></a></li>
+                    <li><a href="users" class=""><i class="lnr lnr-user"></i> <span>Users</span></a></li>
+                    <li><a href="settings" class=""><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -183,9 +94,21 @@
     <div class="main">
         <!-- MAIN CONTENT -->
         <div class="main-content">
+            <div class="container-fluid">
+
+            </div>
         </div>
-        <div id="snackbar">Some text some message..</div>
     </div>
+    <script>
+        $.ajax({
+            url: 'dashboard',
+            dataType: 'ejs',
+            success: function(html) {
+                var div = $('.container-fluid', $(html)).addClass('done');
+                $('#indexHeader1').html(div);
+            }
+        });
+    </script>
 </div>
 
 </body>
