@@ -1,17 +1,97 @@
 <div class="container-fluid">
-    <div class="panel panel-headline">
-        <div class="panel-heading">
+    <div style="background-color: white;padding: 2%">
+        <div>
             <div class="row">
                 <div class="col-md-3">
                     <p style="font-size: 1.5em">Users</p>
                 </div>
                 <div class="pull-right col-md-1">
-                    <button type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" style="color: #0c8ec3;font-size: 2.0em"></i>
+                    <button type="button"  style="background-color: transparent;border: 0px" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" style="color: #0c8ec3;font-size: 2.0em"></i>
                     </button>
                 </div>
             </div>
         </div>
+        <div class="panel-body">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Super Admin</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Super Admin's added</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Admin</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Admin's added</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Leaders</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Leader's added</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Mentor's</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Mentor's added</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Innovators</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Innovators added</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Academic patner</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Academic patner added</div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Guest</h3>
+                    <div class="right">
+                        <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div> No Guest added</div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -49,10 +129,9 @@
                                             <option value="superadmin">Super Admin</option>
                                             <option value="admin">Admin</option>
                                             <option value="leader">Leader</option>
-                                            <option value="mentor">Mentor</option>
+                                            <option value="innovator">Mentor</option>
                                             <option value="innovator">Innovator</option>
-                                            <option value="acad_patner">Academic Patner</option>
-                                            <option value="guest">Guest</option>
+                                            <option>Guest</option>
                                         </select>
                                     </div>
                                 </form>
@@ -70,6 +149,7 @@
     </div>
     <script>
         $(document).ready(function () {
+
             $('#user_invite').on('click', function (e) {
                 e.preventDefault();
                 var name = $('#name').val();
@@ -126,6 +206,32 @@
 
                 }
             }
+            var affectedElement = $('.panel-body');
+
+            $('.panel .panel-heading').clickToggle(
+                function(e) {
+                    e.preventDefault();
+
+                    // if has scroll
+                    if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                        affectedElement = $('.slimScrollDiv');
+                    }
+
+                    $(this).parents('.panel').find(affectedElement).slideUp(300);
+                    $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+                },
+                function(e) {
+                    e.preventDefault();
+
+                    // if has scroll
+                    if( $(this).parents('.panel').find('.slimScrollDiv').length > 0 ) {
+                        affectedElement = $('.slimScrollDiv');
+                    }
+
+                    $(this).parents('.panel').find(affectedElement).slideDown(300);
+                    $(this).find('i.lnr-chevron-up').toggleClass('lnr-chevron-down');
+                }
+            ).trigger('click');
         });
 
         function myFunction() {
@@ -137,3 +243,10 @@
         }
     </script>
 </div>
+<script src="assets/scripts/main.js"></script>
+<style>
+    .panel{
+        background-color: #0b5b97;
+        color: white;
+    }
+</style>

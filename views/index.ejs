@@ -663,7 +663,15 @@
                 success: function(response) {
                     if(response=='success')
                     {
-                        window.location.href='/home';
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.setItem("email_id", user);
+                            window.location.href='/home';
+                        }
+                        else
+                        {
+                            $('#snackbar').text("Sorry your browser doesn't support our website");
+                            myFunction();
+                        }
                     }
                     else
                     {
