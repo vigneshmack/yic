@@ -308,8 +308,6 @@ var fun=function (req,res,email,name,role,id,crypted) {
     var s=req.session;
     s.user_valid="n";
 
-
-
 };
 
 
@@ -375,7 +373,49 @@ router.post('/login',function(req,res)
       }
     });
 });
+var getcount=function(req,collection)
+{
+    collection.find({"list" : "guestemails"}).forEach(function(x)
+    {
+        var cc=x.count;
+        ++cc;
+        setcount(req,collection,cc);
+    });
+}
+var setcount=function(req,collection,cc)
+{
+    collection.updateOne({"list" : "guestemails"},{$set:{"count":cc}},function(err,ok)
+    {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log("count updated");
+            pushemail(req,collection);
+        }
+    });
+}
+var pushemail=function(req,collection)
+{
+    collection.update({"list":"guestemails"},{$push:{"email":req.body.email}},function(err,k){
+        if(err)
+        {
+            console.log("err");
+        }
+        else
+        {
+            console.log("email updated");
+        }
+    });
+}
+router.post('/guestlogin',function(req,res,next)
+{
+    var collection=_db.collection("guestusers");
+    getcount(req,collection);
 
+});
 router.get('/home', function(req, res, next) {
     console.log("home");
     res.render('home', { title: 'YIC' });
