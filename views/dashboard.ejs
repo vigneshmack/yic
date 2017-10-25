@@ -8,4 +8,24 @@
             </div>
         </div>
     </div>
+    <button class="btn btn-primary" id="check_button">Dashboard</button>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#check_button').on('click',function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/get_sample',
+                type: "POST",
+                success: function (response) {
+
+                },
+                complete:function (r) {
+                    alert(r.responseText);
+                },
+                error: function (xhr, status, error) {
+                }
+            });
+        })
+    })
+</script>

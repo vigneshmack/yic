@@ -60,10 +60,17 @@
                             password: password
                         },
                         success: function(response) {
-
-                        },
-                        complete:function (r) {
-                            alert(r.responseText);
+                            if(response=="yes")
+                            {
+                                $('#snackbar').text("Welcome to YIC");
+                                myFunction();
+                                window.location.href='/';
+                            }
+                            else
+                            {
+                                $('#snackbar').text("Something went Wrong...!!!");
+                                myFunction();
+                            }
                         },
                         error: function(xhr, status, error) {
                         }
