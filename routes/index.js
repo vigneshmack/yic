@@ -343,8 +343,12 @@ router.post('/signup_user',function(req,res){
 
         s_user(req,res,ses.user_id);
 
-        res.render("index",{title:"yic"});
+        res.send("yes");
 
+    }
+    else
+    {
+        res.send("fail");
     }
 
 
