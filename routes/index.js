@@ -358,20 +358,22 @@ router.post('/login',function(req,res)
       var p=x.password;
       if((e===req.body.email)&&(p===req.body.password))
       {
-            console.log("Login successfull");
-            res.send("Login successfull");
+          //var dashses=req.session;
+          //dashses.email=req.body.email;
+          console.log("Login successfull");
+          res.send("success");
+          //res.redirect(307,'/home');
       }
       else
       {
           console.log("Login unsuccessfull");
-          res.send("login unsuccessfull");
+          res.send("failed");
       }
     });
 });
 
 router.get('/home', function(req, res, next) {
-    var dashses=req.session;
-    dashses.email=req.body.email;
+    console.log("home");
     res.render('home', { title: 'YIC' });
 });
 router.get('/projects', function(req, res, next) {
@@ -395,6 +397,7 @@ router.get('/settings', function(req, res, next) {
 router.get('/profile', function(req, res, next) {
     res.render('profile', { title: 'YIC' });
 });
-
-
+router.post('/get_sample',function (req,res,next) {
+    res.send('getting response');
+});
 module.exports = router;

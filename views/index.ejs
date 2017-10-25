@@ -24,13 +24,13 @@
             visibility: hidden;
             min-width: 250px;
             margin-left: -125px;
-            background-color: #32d2df;
+            background-color: #69b4d7;
             color: #fff;
             text-align: center;
             border-radius: 2px;
             padding: 16px;
             position: fixed;
-            z-index:999;
+            z-index:9999999;
             left: 50%;
             bottom: 30px;
             font-size: 17px;
@@ -661,7 +661,15 @@
                     password: pass
                 },
                 success: function(response) {
-
+                    if(response=='success')
+                    {
+                        window.location.href='/home';
+                    }
+                    else
+                    {
+                        $('#snackbar').text("Invalid Credentials");
+                        myFunction();
+                    }
                 },
                 error: function(xhr, status, error) {
 
