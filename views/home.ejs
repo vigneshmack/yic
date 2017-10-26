@@ -81,7 +81,6 @@
             var email=localStorage.getItem("email_id");
 
             var socket = io('http://localhost:3000',{query:{'email':email}});
-            alert(email);
             socket.on('welcome_message',function (data) {
                 $('#snackbar').text(data);
                 myFunction();
