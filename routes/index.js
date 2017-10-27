@@ -373,16 +373,16 @@ router.post('/login',function(req,res)
       }
     });
 });
-var getcount=function(req,collection)
+var getcount=function(req,res,collection)
 {
     collection.find({"list" : "guestemails"}).forEach(function(x)
     {
         var cc=x.count;
         ++cc;
-        setcount(req,collection,cc);
+        setcount(req,res,collection,cc);
     });
 }
-var setcount=function(req,collection,cc)
+var setcount=function(req,res,collection,cc)
 {
     collection.updateOne({"list" : "guestemails"},{$set:{"count":cc}},function(err,ok)
     {
@@ -393,11 +393,11 @@ var setcount=function(req,collection,cc)
         else
         {
             console.log("count updated");
-            pushemail(req,collection);
+            pushemail(req,res,collection);
         }
     });
 }
-var pushemail=function(req,collection)
+var pushemail=function(req,res,collection)
 {
     collection.update({"list":"guestemails"},{$push:{"email":req.body.email}},function(err,k){
         if(err)
@@ -407,13 +407,14 @@ var pushemail=function(req,collection)
         else
         {
             console.log("email updated");
+            res.send("success")
         }
     });
 }
-router.post('/guestlogin',function(req,res,next)
+router.post('/guest_login',function(req,res,next)
 {
     var collection=_db.collection("guestusers");
-    getcount(req,collection);
+    getcount(req,res,collection);
 
 });
 router.get('/home', function(req, res, next) {
