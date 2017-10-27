@@ -26,11 +26,7 @@
     <script src="assets/vendor/chartist/js/chartist.min.js"></script>
     <script src="assets/scripts/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js">
-
-    </script>
     <script>
-
         $(document).ready(function() {
             $(".main-content").load('/dashboard');
             $('#nav_dashboard').on('click',function (e) {
@@ -63,11 +59,6 @@
                 remove_add_active('nav_settings');
                 $(".main-content").load('/settings');
             });
-            $('#nav_settings1').on('click',function (e) {
-                e.preventDefault();
-                remove_add_active('nav_settings');
-                $(".main-content").load('/settings');
-            });
             $('#nav_profile').on('click',function (e) {
                 e.preventDefault();
                 $('.nav li a').removeClass('active');
@@ -76,21 +67,6 @@
             function remove_add_active(name) {
                 $('.nav li a').removeClass('active');
                 $('#'+name +' a').addClass('active');
-            }
-
-            var email=localStorage.getItem("email_id");
-
-            var socket = io('http://localhost:3000',{query:{'email':email}});
-            socket.on('welcome_message',function (data) {
-                $('#snackbar').text(data);
-                myFunction();
-            });
-            function myFunction() {
-                var x = document.getElementById("snackbar")
-                x.className = "show";
-                setTimeout(function () {
-                    x.className = x.className.replace("show", "");
-                }, 3000);
             }
             });
     </script>
@@ -136,9 +112,6 @@
             from {bottom: 30px; opacity: 1;}
             to {bottom: 0; opacity: 0;}
         }
-        ::-webkit-scrollbar {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -163,17 +136,6 @@
                     </form>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                            <i class="lnr lnr-bubble"></i>
-                            <span class="badge bg-danger">2</span>
-                        </a>
-                        <ul class="dropdown-menu notifications">
-                            <li><a href="#" class="notification-item"><span class="dot bg-warning"></span><Strong>Ranjith</Strong><br><span style="margin-left: 5%">UI Team is slow</span></a></li>
-                            <li><a href="#" class="notification-item"><span class="dot bg-danger"></span><Strong>Vignesh. R</Strong><br><span style="margin-left: 5%">UI Team is slow</span></a></li>
-                            <li><a href="#" class="more">See all messages</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                             <i class="lnr lnr-alarm"></i>
                             <span class="badge bg-danger">5</span>
                         </a>
@@ -191,7 +153,7 @@
                         <ul class="dropdown-menu">
                             <li id="nav_profile"><a><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                            <li id="nav_settings1"><a><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                            <li id="nav_settings"><a><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                             <li><a><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
                         </ul>
                     </li>
