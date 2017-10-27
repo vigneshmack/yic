@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var session = require("express-session");
 var promise=require('promise');
+var fs=require("fs");
 var crypto=require("crypto");
 router.use(session({
     secret: 'yicauthprivate',
@@ -12,6 +13,9 @@ router.use(session({
 var io=require('../bin/www');
 
 //var _db=require('./mongo');
+var multer=require("multer");
+var upload=multer({dest:'/tmp/'});
+router.use(bodyparser.urlencoded({extended:false}));
 var id=require('idgen');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
@@ -410,12 +414,40 @@ var pushemail=function(req,collection)
         }
     });
 }
+
 router.post('/guestlogin',function(req,res,next)
 {
     var collection=_db.collection("guestusers");
     getcount(req,collection);
 
 });
+router.post('/profile_upload',upload.single("file"),function(req,res,next)
+{
+    fs.readFile(req.file.path,function(err,data)
+    {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            var filepath=__dirname+"/public/assests/images/profileimages/"+id(8)+".jpg";
+            fs.writeFile(filepath,data,function(err,k)
+            {
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    console.log("successfully stored in the images folder");
+                    res.send("success");
+                }
+            });
+        }
+    });
+});
+
 router.get('/home', function(req, res, next) {
     console.log("home");
     res.render('home', { title: 'YIC' });
