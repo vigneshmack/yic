@@ -1,6 +1,4 @@
 var express = require('express');
-var multer=require("multer");
-var upload=multer({dest:'/tmp/'});
 var router = express.Router();
 var session = require("express-session");
 var promise=require('promise');
@@ -14,8 +12,6 @@ router.use(session({
 var io=require('../bin/www');
 
 //var _db=require('./mongo');
-var fs=require("fs");
-router.use(bodyparser.urlencoded({extended:false}));
 var id=require('idgen');
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
@@ -377,10 +373,18 @@ router.post('/login',function(req,res)
       }
     });
 });
-
-router.post('/profile_upload',upload.single("file"),function(req,res,next)
+var getcount=function(req,res,collection)
 {
-    fs.readFile(req.file.path,function(err,data)
+    collection.find({"list" : "guestemails"}).forEach(function(x)
+    {
+        var cc=x.count;
+        ++cc;
+        setcount(req,res,collection,cc);
+    });
+}
+var setcount=function(req,res,collection,cc)
+{
+    collection.updateOne({"list" : "guestemails"},{$set:{"count":cc}},function(err,ok)
     {
         if(err)
         {
@@ -388,25 +392,29 @@ router.post('/profile_upload',upload.single("file"),function(req,res,next)
         }
         else
         {
-            var filepath=__dirname+"/public/assests/images/profileimages/"+id(8)+".jpg";
-            fs.writeFile(filepath,data,function(err,k)
-            {
-                if(err)
-                {
-                    console.log(err);
-                }
-                else
-                {
-                    console.log("successfully stored in the images folder");
-                    res.send("success");
-                }
-            });
+            console.log("count updated");
+            pushemail(req,res,collection);
         }
     });
-});
-
-router.post('/guestlogin',function(req,res,next)
+}
+var pushemail=function(req,res,collection)
 {
+    collection.update({"list":"guestemails"},{$push:{"email":req.body.email}},function(err,k){
+        if(err)
+        {
+            console.log("err");
+        }
+        else
+        {
+            console.log("email updated");
+            res.send("success")
+        }
+    });
+}
+router.post('/guest_login',function(req,res,next)
+{
+    var collection=_db.collection("guestusers");
+    getcount(req,res,collection);
 
 });
 router.get('/home', function(req, res, next) {
