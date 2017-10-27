@@ -1,157 +1,287 @@
 <div class="container-fluid">
-    <div class=" panel-profile" >
-            <!-- LEFT COLUMN -->
-            <div class="profile-left">
-                <!-- PROFILE HEADER -->
-                <div class="profile-header">
-                    <div class="overlay"></div>
-                    <div class="profile-main">
-                        <img src="assets/img/user-medium.png" class="img-circle" alt="Avatar">
-                        <h3 class="name"></h3>
-                        <span class="online-status status-available">Available</span>
-                    </div>
-                </div>
-                <div class="profile-detail">
-                    <div class="profile-info">
-                        <h4 class="heading">Basic Info</h4>
-                        <ul class="list-unstyled list-justify">
-                            <li>Birthdate <span>24 Aug, 2016</span></li>
-                            <li>Mobile <span>(124) 823409234</span></li>
-                            <li>Email <span>samuel@mydomain.com</span></li>
-                            <li>Website <span><a href="https://www.themeineed.com">www.themeineed.com</a></span></li>
-                        </ul>
-                    </div>
-                    <div class="profile-info">
-                        <h4 class="heading">Social</h4>
-                        <ul class="list-inline social-icons">
-                            <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="google-plus-bg"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="github-bg"><i class="fa fa-github"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="profile-info">
-                        <h4 class="heading">About</h4>
-                        <p>Interactively fashion excellent information after distinctive outsourcing.</p>
-                    </div>
-                    <div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
+    <div class=" panel-profile">
+        <!-- LEFT COLUMN -->
+        <div class="profile-left">
+            <!-- PROFILE HEADER -->
+            <div class="profile-header">
+                <div class="overlay"></div>
+                <div class="profile-main">
+                    <img src="assets/img/user-medium.png" class="img-circle" alt="Avatar">
+                    <h3 class="name"></h3>
+                    <span class="btn btn-block btn-primary" data-toggle="modal" data-target="#myModal">Upload Profile Picture</span>
                 </div>
             </div>
-            <div class="profile-right">
-                <div class="custom-tabs-line tabs-line-bottom left-aligned">
-                    <ul class="nav" role="tablist">
-                        <li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Skills</a></li>
-                        <li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Projects <span class="badge">7</span></a></li>
+            <div class="profile-detail">
+                <div class="profile-info">
+                    <h4 class="heading">Basic Info</h4>
+                    <ul class="list-unstyled list-justify">
+                        <li>Birthdate <span>24 Aug, 2016</span></li>
+                        <li>Mobile <span>(124) 823409234</span></li>
+                        <li id="profile_email">Email <span></span></li>
+                        <li>Website <span><a href="https://www.themeineed.com">www.themeineed.com</a></span></li>
                     </ul>
                 </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="tab-bottom-left1">
-                        <ul class="list-unstyled activity-timeline">
-                        </ul>
-                    </div>
-                    <div class="tab-pane fade" id="tab-bottom-left2">
-                        <div class="table-responsive">
-                            <table class="table project-table">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Progress</th>
-                                    <th>Leader</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><a href="#">Spot Media</a></td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                <span>60% Complete</span>
-                                            </div>
+                <div class="profile-info">
+                    <h4 class="heading">Social</h4>
+                    <ul class="list-inline social-icons">
+                        <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="google-plus-bg"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="github-bg"><i class="fa fa-github"></i></a></li>
+                    </ul>
+                </div>
+                <div class="profile-info">
+                    <h4 class="heading">About</h4>
+                    <p>Interactively fashion excellent information after distinctive outsourcing.</p>
+                </div>
+                <div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="custom-tabs-line tabs-line-bottom left-aligned">
+                <ul class="nav" role="tablist">
+                    <li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Skills</a></li>
+                    <li><a href="#tab-bottom-left2" role="tab" data-toggle="tab">Projects <span
+                                    class="badge">7</span></a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab-bottom-left1">
+                    <ul class="list-unstyled activity-timeline">
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="tab-bottom-left2">
+                    <div class="table-responsive">
+                        <table class="table project-table">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Progress</th>
+                                <th>Leader</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="#">Spot Media</a></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                             aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                            <span>60% Complete</span>
                                         </div>
-                                    </td>
-                                    <td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a
-                                                href="#">Michael</a></td>
-                                    <td><span class="label label-success">ACTIVE</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">E-Commerce Site</a></td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="33"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-                                                <span>33% Complete</span>
-                                            </div>
+                                    </div>
+                                </td>
+                                <td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a
+                                            href="#">Michael</a></td>
+                                <td><span class="label label-success">ACTIVE</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">E-Commerce Site</a></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="33"
+                                             aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
+                                            <span>33% Complete</span>
                                         </div>
-                                    </td>
-                                    <td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a
-                                                href="#">Antonius</a></td>
-                                    <td><span class="label label-warning">PENDING</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">Project 123GO</a></td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="68"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width: 68%;">
-                                                <span>68% Complete</span>
-                                            </div>
+                                    </div>
+                                </td>
+                                <td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a
+                                            href="#">Antonius</a></td>
+                                <td><span class="label label-warning">PENDING</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Project 123GO</a></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="68"
+                                             aria-valuemin="0" aria-valuemax="100" style="width: 68%;">
+                                            <span>68% Complete</span>
                                         </div>
-                                    </td>
-                                    <td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a
-                                                href="#">Antonius</a></td>
-                                    <td><span class="label label-success">ACTIVE</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">Wordpress Theme</a></td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="75"
-                                                 aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
-                                                <span>75%</span>
-                                            </div>
+                                    </div>
+                                </td>
+                                <td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"> <a
+                                            href="#">Antonius</a></td>
+                                <td><span class="label label-success">ACTIVE</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Wordpress Theme</a></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="75"
+                                             aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
+                                            <span>75%</span>
                                         </div>
-                                    </td>
-                                    <td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a
-                                                href="#">Michael</a></td>
-                                    <td><span class="label label-success">ACTIVE</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">Project 123GO</a></td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar"
-                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                 style="width: 100%;">
-                                                <span>100%</span>
-                                            </div>
+                                    </div>
+                                </td>
+                                <td><img src="assets/img/user2.png" alt="Avatar" class="avatar img-circle"> <a
+                                            href="#">Michael</a></td>
+                                <td><span class="label label-success">ACTIVE</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Project 123GO</a></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar"
+                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 100%;">
+                                            <span>100%</span>
                                         </div>
-                                    </td>
-                                    <td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"/> <a
-                                                href="#">Antonius</a></td>
-                                    <td><span class="label label-default">CLOSED</span></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">Redesign Landing Page</a></td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar"
-                                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                                 style="width: 100%;">
-                                                <span>100%</span>
-                                            </div>
+                                    </div>
+                                </td>
+                                <td><img src="assets/img/user1.png" alt="Avatar" class="avatar img-circle"/> <a
+                                            href="#">Antonius</a></td>
+                                <td><span class="label label-default">CLOSED</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Redesign Landing Page</a></td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar"
+                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                             style="width: 100%;">
+                                            <span>100%</span>
                                         </div>
-                                    </td>
-                                    <td><img src="assets/img/user5.png" alt="Avatar" class="avatar img-circle"/> <a
-                                                href="#">Jason</a></td>
-                                    <td><span class="label label-default">CLOSED</span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </div>
+                                </td>
+                                <td><img src="assets/img/user5.png" alt="Avatar" class="avatar img-circle"/> <a
+                                            href="#">Jason</a></td>
+                                <td><span class="label label-default">CLOSED</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upload Profile</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                </div>
+                <div class="row" style="padding: 3%">
+                    <div class="input-group" style="padding-bottom: 3%">
+                        <input type="text" class="form-control" readonly>
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-file">Browse… <input type="file" id="profile_img">
+                            </span>
+                        </span>
+                    </div>
+                    <img id='img-upload'/>
+                    <div class="" style="padding-top: 3%">
+                        <div class="btn btn-block btn-primary" id="upload_img">Upload</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function() {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function(event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if( input.length ) {
+                input.val(log);
+            } else {
+                if( log ) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#profile_img").change(function(){
+            readURL(this);
+        });
+
+        $('#profile_email').find('span').text(localStorage.getItem("email_id"));
+        $('#upload_img').on('click',function (e) {
+            e.preventDefault();
+            validateImage();
+        });
+
+        function validateImage() {
+            var formData = new FormData();
+
+            var file = document.getElementById("profile_img").files[0];
+
+            formData.append("Filedata", file);
+            var t = file.type.split('/').pop().toLowerCase();
+            alert(t);
+            if (t != "jpg" && t != "png" && t!="jpeg") {
+                alert('Please select a valid image file');
+                document.getElementById("img").value = '';
+                return false;
+            }
+            else if (file.size > 30720) {
+                alert('Max Upload csize is 30KB only');
+                document.getElementById("img").value = '';
+                return false;
+            }
+            else
+            {
+                $.ajax({
+                    url: '/profile_upload',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        alert('upload successful!\n' + data);
+                    }
+                });
+            }
+        }
+    });
+</script>
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    #img-upload{
+        width: 100%;
+    }
+</style>
