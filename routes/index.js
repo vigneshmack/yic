@@ -3,6 +3,7 @@ var router = express.Router();
 var session = require("express-session");
 var promise=require('promise');
 var fs=require("fs");
+var bodyparser=require("body-parser");
 var crypto=require("crypto");
 router.use(session({
     secret: 'yicauthprivate',
@@ -14,7 +15,6 @@ var io=require('../bin/www');
 
 //var _db=require('./mongo');
 var multer=require("multer");
-var upload=multer({dest:'/tmp/'});
 router.use(bodyparser.urlencoded({extended:false}));
 var id=require('idgen');
 var nodemailer = require('nodemailer');
@@ -419,11 +419,32 @@ router.post('/guestlogin',function(req,res,next)
 {
     var collection=_db.collection("guestusers");
     getcount(req,collection);
-
 });
-router.post('/profile_upload',upload.single("file"),function(req,res,next)
+router.post('/profile_upload',function(req,res,next)
 {
-    fs.readFile(req.file.path,function(err,data)
+    var storage	=multer.diskStorage({
+        destination: function (req, file, callback) {
+            callback(null, __dirname+"/public/assets/images/profileimages/");
+        },
+        filename: function (req, file, callback) {
+            callback(null, id(8)+".jpg");
+        }
+    });
+    var upload = multer({ storage : storage}).single("profile_photo");
+    console.log("get");
+    upload(req,res,function(err) {
+        if(err)
+        {
+            console.log("error occurs while uploaded");
+        }
+        else
+        {
+            console.log("success");
+            res.send("success");
+        }
+    });
+
+   /* fs.readFile(req.file.path,function(err,data)
     {
         if(err)
         {
@@ -445,7 +466,7 @@ router.post('/profile_upload',upload.single("file"),function(req,res,next)
                 }
             });
         }
-    });
+    });*/
 });
 
 router.get('/home', function(req, res, next) {
