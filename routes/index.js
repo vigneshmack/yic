@@ -5,6 +5,7 @@ var promise=require('promise');
 var fs=require("fs");
 var bodyparser=require("body-parser");
 var crypto=require("crypto");
+var formidable = require('formidable');
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -414,7 +415,24 @@ var pushemail=function(req,collection)
         }
     });
 }
-
+roter.post('/profile_photo_email',function(req,res,next)
+{
+     var collection=_db.collection("images_id");
+     var filename=id(8)+".jpg";
+     collection.insertOne({"email":req.body.email,"filename":filename},function(err,ok)
+    {
+          if(err)
+          {
+              console.log(err);
+              console.log("error occured when inserted");
+          }
+          else
+          {
+              console.log("success");
+              res.send(filename);
+          }
+    });
+});
 router.post('/guestlogin',function(req,res,next)
 {
     var collection=_db.collection("guestusers");
@@ -422,7 +440,25 @@ router.post('/guestlogin',function(req,res,next)
 });
 router.post('/profile_upload',function(req,res,next)
 {
-    var storage	=multer.diskStorage({
+    console.log("get");
+    var form = new formidable.IncomingForm();
+    form.multiples = false;
+    form.uploadDir = path.join("./public/assets/images/profileimages/");
+    form.on('file', function(field, file) {
+        fs.rename(file.path, path.join(form.uploadDir,file.name), function(err)
+        {
+            console.log("succesfully  renamed");
+        });
+    });
+    form.on('error', function(err) {
+        console.log('An error has occured: \n' + err);
+    });
+    form.on('end', function() {
+        res.end('success');
+    });
+    form.parse(req);
+
+    /*var storage	=multer.diskStorage({
         destination: function (req, file, callback) {
             callback(null, __dirname+"/public/assets/images/profileimages/");
         },
@@ -442,7 +478,7 @@ router.post('/profile_upload',function(req,res,next)
             console.log("success");
             res.send("success");
         }
-    });
+    });*/
 
    /* fs.readFile(req.file.path,function(err,data)
     {
