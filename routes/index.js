@@ -3,6 +3,7 @@ var router = express.Router();
 var session = require("express-session");
 var promise=require('promise');
 var fs=require("fs");
+var path=require("path");
 var bodyparser=require("body-parser");
 var crypto=require("crypto");
 var formidable = require('formidable');
@@ -417,9 +418,9 @@ var pushemail=function(req,collection)
 }
 roter.post('/profile_photo_email',function(req,res,next)
 {
-     var collection=_db.collection("images_id");
-     var filename=id(8)+".jpg";
-     collection.insertOne({"email":req.body.email,"filename":filename},function(err,ok)
+     var collection=_db.collection("users");
+     var filename=id(8);
+     collection.updateOne({"email":req.body.email},{$set: {"filename":filename}},function(err,ok)
     {
           if(err)
           {
@@ -451,7 +452,7 @@ router.post('/profile_upload',function(req,res,next)
         });
     });
     form.on('error', function(err) {
-        console.log('An error has occured: \n' + err);
+        console.log('error has occured' + err);
     });
     form.on('end', function() {
         res.end('success');
