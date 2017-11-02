@@ -6,6 +6,7 @@ var fs=require("fs");
 var bodyparser=require("body-parser");
 var crypto=require("crypto");
 var formidable = require('formidable');
+
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -437,6 +438,41 @@ router.post('/profile_photo_email',function(req,res,next)
 
 router.post('/guest_login',function(req,res)     //GUEST LOGIN
 {
+var email=req.body.email;
+
+var h=_db.collection("guest_email");
+var cursor=h.find({_id:email});
+
+    cursor.count(function (err,c){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            if(c===1)
+            {
+               h.find({_id:email}).forEach(function (doc) {
+                  //console.log(doc.visits);
+                     var visits=doc.visits;
+                     visits++;
+                     h.updateOne({_id:email},{$set:{visits:visits}});
+               res.send("success");
+               });
+            }
+            else
+            {
+                var data={
+                  _id:email,
+                    visits:1,
+                    role:"guest"
+                };
+
+                h.insertOne(data);
+                res.send("success");
+            }
+        }
+    });
+
 
 
 
