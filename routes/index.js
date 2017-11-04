@@ -217,7 +217,6 @@ router.post('/user_invite',function(req,res){
             {
                 console.log("yes");
                 yic_id(req,res,gid);
-
             }
         }
     });
@@ -379,44 +378,8 @@ router.post('/login',function(req,res)
       }
     });
 });
-var getcount=function(req,collection)
-{
-    collection.find({"list" : "guestemails"}).forEach(function(x)
-    {
-        var cc=x.count;
-        ++cc;
-        setcount(req,collection,cc);
-    });
-}
-var setcount=function(req,collection,cc)
-{
-    collection.updateOne({"list" : "guestemails"},{$set:{"count":cc}},function(err,ok)
-    {
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            console.log("count updated");
-            pushemail(req,collection);
-        }
-    });
-}
-var pushemail=function(req,collection)
-{
-    collection.update({"list":"guestemails"},{$push:{"email":req.body.email}},function(err,k){
-        if(err)
-        {
-            console.log("err");
-        }
-        else
-        {
-            console.log("email updated");
-        }
-    });
-}
-roter.post('/profile_photo_email',function(req,res,next)
+
+router.post('/profile_photo_email',function(req,res,next)
 {
      var collection=_db.collection("users");
      var filename=id(8);
@@ -434,10 +397,27 @@ roter.post('/profile_photo_email',function(req,res,next)
           }
     });
 });
-router.post('/guestlogin',function(req,res,next)
-{
-    var collection=_db.collection("guestusers");
-    getcount(req,collection);
+router.post("/forgot_password",function(req,res,next) {
+     var collection=_db.collection("email");
+     var cursor=collection.find({_id:req.body.email});
+     cursor.count(function(err,ok)
+     {
+         if(ok===1)
+         {
+             console.log("You are a valid user");
+             collection.updateone({_id:req.body.email},{$set:{"up":"n"}});
+             collection.find({_id:req.body.email}).forEach(function(x)
+             {
+                 var uid=x.id;
+                 send_invite(req.body.email,uid);
+             });
+         }
+         else
+         {
+            console.log("You are an invalid user");
+         }
+     });
+
 });
 router.post('/profile_upload',function(req,res,next)
 {
@@ -458,54 +438,7 @@ router.post('/profile_upload',function(req,res,next)
         res.end('success');
     });
     form.parse(req);
-
-    /*var storage	=multer.diskStorage({
-        destination: function (req, file, callback) {
-            callback(null, __dirname+"/public/assets/images/profileimages/");
-        },
-        filename: function (req, file, callback) {
-            callback(null, id(8)+".jpg");
-        }
-    });
-    var upload = multer({ storage : storage}).single("profile_photo");
-    console.log("get");
-    upload(req,res,function(err) {
-        if(err)
-        {
-            console.log("error occurs while uploaded");
-        }
-        else
-        {
-            console.log("success");
-            res.send("success");
-        }
-    });*/
-
-   /* fs.readFile(req.file.path,function(err,data)
-    {
-        if(err)
-        {
-            console.log(err);
-        }
-        else
-        {
-            var filepath=__dirname+"/public/assests/images/profileimages/"+id(8)+".jpg";
-            fs.writeFile(filepath,data,function(err,k)
-            {
-                if(err)
-                {
-                    console.log(err);
-                }
-                else
-                {
-                    console.log("successfully stored in the images folder");
-                    res.send("success");
-                }
-            });
-        }
-    });*/
 });
-
 router.get('/home', function(req, res, next) {
     console.log("home");
     res.render('home', { title: 'YIC' });
