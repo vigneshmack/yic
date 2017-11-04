@@ -434,32 +434,35 @@ router.post('/guest_login',function(req,res)     //GUEST LOGIN
     });
 });
 
-
-
 router.post("/forgot_password",function(req,res,next) {
      var collection=_db.collection("email");
      var cursor=collection.find({_id:req.body.email});
      cursor.count(function(err,ok)
      {
-         if(ok===1)
+         if(err)
          {
-             console.log("You are a valid user");
-             collection.updateone({_id:req.body.email},{$set:{"up":"n"}});
-             collection.find({_id:req.body.email}).forEach(function(x)
-             {
-                 var uid=x.id;
-                 send_invite(req.body.email,uid);
-             });
+             console.log(err);
          }
          else
          {
-            console.log("You are an invalid user");
+             if(ok===1)
+             {
+                 console.log("You are a valid user");
+                 collection.updateone({_id:req.body.email},{$set:{"up":"n"}});
+                 collection.find({_id:req.body.email}).forEach(function(x)
+                 {
+                     var uid=x.id;
+                     send_invite(req.body.email,uid);
+                 });
+             }
+             else
+             {
+                 console.log("You are an invalid user");
+             }
          }
      });
 
 });
-
-
 
 router.post('/profile_upload',function(req,res,next)       //PROFILE UPLOAD
 {
