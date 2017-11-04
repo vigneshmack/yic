@@ -100,10 +100,6 @@ function send_invite(email,url)                                     //sending em
 
         }
     });
-
-
-
-
 }
 
 var invite1=function (req,res,userid,gid) {
@@ -296,16 +292,15 @@ router.get("/signup",function(req,res) {
 
 var fun=function (req,res,email,name,role,id,crypted) {
 
-
+    var pid=id(8)+".jpg";
     var data={
         _id:id,
         email:email,
         name:name,
         role:role,
         password:crypted,
-        profileid:id(8)+".jpg"
+        profile_id:pid
     };
-
     var h=_db.collection("users");
 
     h.insertOne(data);
@@ -435,8 +430,11 @@ router.post("/getprofile_id",function(req,res,next)
            {
               collection.find({"email":req.body.email}).forEach(function(x)
               {
-                 var filename=x.profileid;
-                 res.send(filename);
+                  var data={
+                       filename:x.profile_id,
+                       name:x.name
+                  };
+                 res.send(JSON.stringify(data));
               });
            }
            else
@@ -479,7 +477,6 @@ router.post('/guest_login',function(req,res)     //GUEST LOGIN
         }
     });
 });
-
 router.post("/forgot_password",function(req,res,next) {
      var collection=_db.collection("email");
      var cursor=collection.find({_id:req.body.email});
