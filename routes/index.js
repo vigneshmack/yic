@@ -7,6 +7,7 @@ var path=require("path");
 var bodyparser=require("body-parser");
 var crypto=require("crypto");
 var formidable = require('formidable');
+
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -379,6 +380,7 @@ router.post('/login',function(req,res)
     });
 });
 
+
 router.post('/profile_photo_email',function(req,res,next)
 {
      var collection=_db.collection("users");
@@ -397,6 +399,46 @@ router.post('/profile_photo_email',function(req,res,next)
           }
     });
 });
+
+router.post('/guest_login',function(req,res)     //GUEST LOGIN
+{
+var email=req.body.email;
+console.log(email);
+var h=_db.collection("guest_email");
+var cursor=h.find({_id:email});
+
+    cursor.count(function (err,c){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            if(c===1)
+            {
+               h.find({_id:email}).forEach(function (doc) {
+                  //console.log(doc.visits);
+                     var visits=doc.visits;
+                     visits++;
+                     h.updateOne({_id:email},{$set:{visits:visits}});
+               res.send("success");
+               });
+            }
+            else
+            {
+                var data={
+                  _id:email,
+                    visits:1,
+                    role:"guest"
+                };
+
+                h.insertOne(data);
+                res.send("success");
+            }
+        }
+    });
+
+
+
 router.post("/forgot_password",function(req,res,next) {
      var collection=_db.collection("email");
      var cursor=collection.find({_id:req.body.email});
@@ -419,12 +461,15 @@ router.post("/forgot_password",function(req,res,next) {
      });
 
 });
-router.post('/profile_upload',function(req,res,next)
+
+
+
+router.post('/profile_upload',function(req,res,next)       //PROFILE UPLOAD
 {
     console.log("get");
     var form = new formidable.IncomingForm();
     form.multiples = false;
-    form.uploadDir = path.join("./public/assets/images/profileimages/");
+    form.uploadDir = path.join("./assets/images/profileimages/");
     form.on('file', function(field, file) {
         fs.rename(file.path, path.join(form.uploadDir,file.name), function(err)
         {
