@@ -6,6 +6,7 @@ var fs=require("fs");
 var bodyparser=require("body-parser");
 var crypto=require("crypto");
 var formidable = require('formidable');
+
 router.use(session({
     secret: 'yicauthprivate',
     cookie:{maxAge:60*60*24*1000},
@@ -378,7 +379,8 @@ router.post('/login',function(req,res)
       }
     });
 });
-var getcount=function(req,collection)
+
+/*var getcount=function(req,collection)
 {
     collection.find({"list" : "guestemails"}).forEach(function(x)
     {
@@ -386,8 +388,8 @@ var getcount=function(req,collection)
         ++cc;
         setcount(req,collection,cc);
     });
-}
-var setcount=function(req,collection,cc)
+}*/
+/*var setcount=function(req,collection,cc)
 {
     collection.updateOne({"list" : "guestemails"},{$set:{"count":cc}},function(err,ok)
     {
@@ -401,8 +403,8 @@ var setcount=function(req,collection,cc)
             pushemail(req,collection);
         }
     });
-}
-var pushemail=function(req,collection)
+}*/
+/*var pushemail=function(req,collection)
 {
     collection.update({"list":"guestemails"},{$push:{"email":req.body.email}},function(err,k){
         if(err)
@@ -414,8 +416,8 @@ var pushemail=function(req,collection)
             console.log("email updated");
         }
     });
-}
-roter.post('/profile_photo_email',function(req,res,next)
+}*/
+router.post('/profile_photo_email',function(req,res,next)
 {
      var collection=_db.collection("images_id");
      var filename=id(8)+".jpg";
@@ -433,12 +435,52 @@ roter.post('/profile_photo_email',function(req,res,next)
           }
     });
 });
-router.post('/guestlogin',function(req,res,next)
+
+router.post('/guest_login',function(req,res)     //GUEST LOGIN
 {
-    var collection=_db.collection("guestusers");
-    getcount(req,collection);
+var email=req.body.email;
+
+var h=_db.collection("guest_email");
+var cursor=h.find({_id:email});
+
+    cursor.count(function (err,c){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            if(c===1)
+            {
+               h.find({_id:email}).forEach(function (doc) {
+                  //console.log(doc.visits);
+                     var visits=doc.visits;
+                     visits++;
+                     h.updateOne({_id:email},{$set:{visits:visits}});
+               res.send("success");
+               });
+            }
+            else
+            {
+                var data={
+                  _id:email,
+                    visits:1,
+                    role:"guest"
+                };
+
+                h.insertOne(data);
+                res.send("success");
+            }
+        }
+    });
+
+
+
+
 });
-router.post('/profile_upload',function(req,res,next)
+
+
+
+router.post('/profile_upload',function(req,res,next)       //PROFILE UPLOAD
 {
     console.log("get");
     var form = new formidable.IncomingForm();
