@@ -165,20 +165,10 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-
                 </div>
                 <div class="row" style="padding: 3%">
-                    <div class="input-group" style="padding-bottom: 3%">
-                        <input type="text" class="form-control" readonly>
-                        <span class="input-group-btn">
-                            <span class="btn btn-default btn-file">Browse… <input type="file" id="profile_img">
-                            </span>
-                        </span>
-                    </div>
-                    <img id='img-upload'/>
-                    <div class="" style="padding-top: 3%">
-                        <div class="btn btn-block btn-primary" id="upload_img">Upload</div>
-                    </div>
+                    <input id="upload-input" type="file" name="uploads[]" style="padding: 2%" >
+                    <button class="btn btn-primary" style="width: 100%" id="profile_photo_upload">Upload</button>
                 </div>
             </div>
         </div>
@@ -186,102 +176,59 @@
 </div>
 <script>
     $(document).ready(function () {
-        $(document).on('change', '.btn-file :file', function() {
-            var input = $(this),
-                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [label]);
-        });
-
-        $('.btn-file :file').on('fileselect', function(event, label) {
-
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label;
-
-            if( input.length ) {
-                input.val(log);
-            } else {
-                if( log ) alert(log);
-            }
+        $('#profile_photo_upload').on('click', function() {
+            var id='';
+            $.ajax({
+                url: '/profile_photo_email',
+                type: 'POST',
+                data: {'email':localStorage.getItem("email")},
+                processData: false,
+                contentType: false,
+                complete: function (r) {
+                    alert(r.responseText);
+                    id=r.responseText;
+                    upload_image(id);
+                }
+            });
 
         });
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        function upload_image(id) {
+            var files = $("#upload-input").get(0).files;
 
-                reader.onload = function (e) {
-                    $('#img-upload').attr('src', e.target.result);
+            if (files.length > 0) {
+                var formData = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    formData.append('uploads[]', file, id);
                 }
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#profile_img").change(function(){
-            readURL(this);
-        });
-
-        $('#profile_email').find('span').text(localStorage.getItem("email_id"));
-        $('#upload_img').on('click',function (e) {
-            e.preventDefault();
-            validateImage();
-        });
-
-        function validateImage() {
-            var formData = new FormData();
-
-            var file = document.getElementById("profile_img").files[0];
-
-            formData.append("Filedata", file);
-            var t = file.type.split('/').pop().toLowerCase();
-            alert(t);
-            if (t != "jpg" && t != "png" && t!="jpeg") {
-                alert('Please select a valid image file');
-                document.getElementById("img").value = '';
-                return false;
-            }
-            else if (file.size > 30720) {
-                alert('Max Upload csize is 30KB only');
-                document.getElementById("img").value = '';
-                return false;
-            }
-            else
-            {
                 $.ajax({
                     url: '/profile_upload',
                     type: 'POST',
                     data: formData,
                     processData: false,
                     contentType: false,
-                    success: function (data) {
-                        alert('upload successful!\n' + data);
+                    complete: function (r) {
+                        alert(r.responseText);
+                        if(r.responseText=='success')
+                        {
+                            $('#myModal').find('.close').click();
+                        }
                     }
                 });
             }
+            else
+            {
+                $('#snackbar').text("Please choose Image");
+                myFunction();
+            }
         }
     });
+    function myFunction() {
+        var x = document.getElementById("snackbar")
+        x.className = "show";
+        setTimeout(function () {
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
 </script>
-<style>
-    .btn-file {
-        position: relative;
-        overflow: hidden;
-    }
-    .btn-file input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        outline: none;
-        background: white;
-        cursor: inherit;
-        display: block;
-    }
-
-    #img-upload{
-        width: 100%;
-    }
-</style>
